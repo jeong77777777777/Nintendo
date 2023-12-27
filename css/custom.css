@@ -1135,7 +1135,7 @@ nav .nintendo_logo {
   font-size: 64px;
   font-weight: 600;
   line-height: 120%; /* 76.8px */
-  transform: translateY(-2349px);
+  transform: translateY(-3428px);
 }
 
 .pk_icon1,
@@ -1415,15 +1415,16 @@ nav .nintendo_logo {
 
 .prbar {
   width: 130px;
-  /* height: 1080px; */
-  border: 1px solid;
+  height: 1080px;
+  /* border: 1px solid; */
 }
+
 .whole_bar,
 .present {
   width: 7px;
   border-radius: 9px;
   flex-shrink: 0;
-  transform: translate(79px, 323px);
+  transform: translate(65px, 323px);
 }
 
 .whole_bar {
@@ -1448,7 +1449,8 @@ nav .nintendo_logo {
   width: 1790px;
   height: 1080px;
   overflow: hidden;
-  border: 1px solid;
+  /* border: 1px solid; */
+  position: relative;
 }
 .kirby *,
 .pikachu *,
@@ -1467,11 +1469,19 @@ nav .nintendo_logo {
 
 .kirbybody,
 .pikachubody,
-.mariobody {
+.mariobody1,
+.mariobody2 {
   color: var(--gray_700);
   font-size: 20px;
   font-weight: 300;
   line-height: 180%; /* 36px */
+}
+
+.id_kirby,
+.id_pikachu,
+.id_mario {
+  right: 30px;
+  bottom: 54px;
 }
 
 /*  -------- kirby ----------- */
@@ -1489,8 +1499,7 @@ nav .nintendo_logo {
 }
 .kirbych,
 .star1,
-.star2,
-.star3 {
+.star2 {
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
@@ -1531,4 +1540,214 @@ nav .nintendo_logo {
 
 .pikachubody {
   width: 619px;
+  left: 121px;
+  top: 762px;
+}
+
+.pikachucap {
+  left: 369px;
+  top: 501px;
+}
+
+.pikachu_title {
+  left: 116px;
+  top: 183px;
+}
+.pikachu2 {
+  left: 942px;
+  top: 0;
+}
+.pikachu1 {
+  left: 817px;
+  top: 341px;
+}
+.pikachuball {
+  left: 688px;
+  top: 138px;
+}
+
+.pikachuch {
+  left: 50px;
+  top: 532px;
+}
+
+/* mario */
+
+.mario_title {
+  left: 84px;
+  top: 292px;
+}
+.marioch1 {
+  left: 277px;
+  top: 47px;
+  transform: rotate(13deg);
+}
+.marioch2 {
+  left: 102px;
+  top: 565px;
+}
+.marioch3 {
+  left: 192px;
+  top: 637px;
+}
+
+.marioch4 {
+  left: 1269px;
+  top: 132px;
+}
+
+.mario_title {
+  left: 84px;
+  top: 292px;
+}
+
+.ctrmario2 {
+  left: 904px;
+  top: 317px;
+}
+.ctrmario1 {
+  left: 622px;
+}
+
+.mariocap {
+  left: 569px;
+  top: 610px;
+}
+.mariobody1,
+.mariobody2 {
+  width: 372px;
+
+  top: 770px;
+}
+
+.mariobody1 {
+  left: 96px;
+}
+
+.mariobody2 {
+  left: 544px;
+}
+
+/*  ------------------ outro page style  ----------------- */
+
+.outro > img {
+  position: absolute;
+}
+
+.bgplay {
+  left: 76px;
+}
+
+.itloud {
+  top: 576px;
+}
+
+.och {
+  left: 1076px;
+  top: 126px;
+}
+
+.outrobody {
+  position: absolute;
+  width: 389px;
+  color: var(--gray_700);
+  text-align: right;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 179.004%; /* 28.641px */
+  left: 950px;
+  top: 764px;
+}
+
+.oicon1 {
+  left: 1006px;
+  top: 160px;
+}
+
+.oicon2 {
+  left: 254px;
+  top: 235px;
+}
+.oicon3 {
+  left: 351px;
+  top: 787px;
+  transform: rotate(99deg);
+}
+.oicon4 {
+  left: 899px;
+  top: 958px;
+  transform: rotate(-36deg);
+}
+.oicon5 {
+  left: 1006px;
+  top: 607px;
+}
+.oicon6 {
+  left: 1717px;
+  top: 353px;
+}
+.oicon7 {
+  left: 1647px;
+  top: 809px;
+  transform: rotate(18deg);
+}
+
+.outroswitch,
+.outroplay {
+  display: flex;
+  position: absolute;
+}
+.outroswitch {
+  left: 336px;
+  top: 410px;
+}
+.outroplay {
+  left: 860px;
+  top: 616px;
+}
+.outroh {
+  display: flex;
+  align-items: center;
+  margin-left: -16px;
+  margin-right: -10px;
+  margin-bottom: -2px;
+}
+.h_centerline,
+.l_btmline {
+  width: 84px;
+  height: 28px;
+  background: var(--primary_red);
+  margin-left: -24px;
+}
+.l_btmline {
+  height: 16px;
+  margin-left: -55px;
+}
+.outro_h_line2 {
+  margin-left: -45px;
+}
+
+.outrol {
+  display: flex;
+  align-items: flex-end;
+}
+.l_btm {
+  margin-left: -12px;
+}
+
+.sw_line,
+.pl_line {
+  position: absolute;
+  height: 2.376px;
+  background: #000;
+}
+.sw_line {
+  width: 747px;
+  left: 309px;
+  top: 530px;
+}
+.pl_line {
+  width: 502px;
+  left: 837px;
+  top: 732px;
 }

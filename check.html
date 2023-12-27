@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      .section {
+        height: 100vh; /* Adjust the height as needed */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .prbar {
+        position: relative;
+        height: 30px; /* Adjust the height as needed */
+        background-color: #f00; /* Adjust the background color as needed */
+        transition: position 0.3s ease; /* Add a smooth transition effect */
+      }
+
+      .prbar.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      /* Add styling for the rest of your sections as needed */
+    </style>
+    <title>Your Web Page</title>
+  </head>
+  <body>
+    <div class="section" id="section1">Section 1 Content</div>
+    <div class="section" id="section2">Section 2 Content</div>
+    <div class="section" id="section3">Section 3 Content</div>
+    <div class="section" id="section4">Section 4 Content</div>
+    <div class="section" id="section5">Section 5 Content</div>
+    <div class="section" id="section6">Section 6 Content</div>
+    <div class="section" id="section7">Section 7 Content</div>
+    <div class="section" id="section8">Section 8 Content</div>
+    <div class="section" id="section9">Section 9 Content</div>
+    <div class="section" id="section10">Section 10 Content</div>
+
+    <div class="prbar" id="prbar">Progress Bar</div>
+
+    <script>
+      window.addEventListener('scroll', function () {
+        var section7 = document.getElementById('section7');
+        var prbar = document.getElementById('prbar');
+
+        var scrollPosition = window.scrollY;
+
+        if (scrollPosition >= section7.offsetTop) {
+          prbar.classList.add('fixed');
+        } else {
+          prbar.classList.remove('fixed');
+        }
+      });
+    </script>
+  </body>
+</html>
