@@ -4,9 +4,11 @@
   height: 500px;
   background: var(--real_p_red);
   padding-top: 150px;
-  display: none;
   position: fixed;
   z-index: 2000;
+  box-shadow: 0px 12px 8.4px 0px rgba(0, 0, 0, 0.25);
+  transform: translateY(-120%);
+  transition: transform 1s ease;
 }
 
 .menu_cnt {
@@ -17,16 +19,18 @@
 }
 
 .menu_cnt img {
+  transform-origin: center center;
   filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+  transition: all 0.4s;
 }
-
+/* 
 .menu_cnt img:hover {
   margin: 0 35px;
   transform: scale(1.3);
-  /* transform-origin: bottom center; */
   transition: all 0.4s;
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.6));
-}
+} */
+
 .close {
   position: absolute;
   top: 0;
@@ -92,13 +96,6 @@ nav .nintendo_logo {
   width: 100px;
   height: 100px;
   visibility: hidden;
-}
-
-.hero > img {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 951px;
 }
 
 .hero .icon img {
@@ -194,6 +191,30 @@ nav .nintendo_logo {
 
 .hero .play > img:nth-child(4) {
   margin-top: 217px;
+}
+
+.NowYoure {
+  width: 454px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 29px;
+  border: 3px solid var(--gray_200);
+  color: var(--gray_200, #ccc);
+  text-align: center;
+  leading-trim: both;
+  text-edge: cap;
+  font-family: Outfit;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 138%; /* 41.4px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 951px;
 }
 
 /* --------------------------------------- anywhere style */
@@ -899,22 +920,26 @@ nav .nintendo_logo {
   margin-left: 50%;
   transform: translateX(-50%);
   margin-top: 170px;
-  mix-blend-mode: color-dodge;
-}
-
-.zd_ch {
-  mix-blend-mode: none;
 }
 
 .zelda_id .footline,
 .footline2 {
   display: flex;
+  align-items: center;
 }
 
+.line_left,
+.line_right {
+  height: 1px;
+  background: var(--gray_300);
+}
 .line_left {
   width: 8px;
 }
 
+.line_right {
+  width: 1510px;
+}
 .zelda_id .footline {
   transform: rotate(-180deg);
 }
@@ -1126,7 +1151,7 @@ nav .nintendo_logo {
 
 .pokemon .pk_logo {
   position: relative;
-  transform: translate(720px, -650px);
+  transform: translate(755px, -670px);
 }
 
 .pkbody {

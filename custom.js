@@ -5,11 +5,89 @@ const menuPage = document.querySelector('.menu');
 const menuClose = document.querySelector('.close');
 
 menuIcon.addEventListener('click', function () {
-  menuPage.style.display = 'block';
+  menuPage.style.transform = 'translateY(0)';
 });
 
 menuClose.addEventListener('click', function () {
-  menuPage.style.display = 'none';
+  menuPage.style.transform = 'translateY(-120%)';
+});
+
+// ----------------------------------- menu click
+
+// const ww = document.body.offsetWidth;
+// // console.log(ww);
+// console.log(Math.floor((123 / 1876) * 200));
+
+// window.addEventListener('mousemove', function (event) {
+//   console.log(event.pageY);
+
+//   // 1000px : 화면크기
+//   // 100px : 마우스 커서 위치
+// });
+
+const hwIcon = document.querySelector('.hwicon');
+const zdIcon = document.querySelector('.zdicon');
+const acIcon = document.querySelector('.acicon');
+const pkIcon = document.querySelector('.pkicon');
+const ctIcon = document.querySelector('.cticon');
+
+const icons = document.querySelectorAll('.menu_cnt > img');
+
+icons.forEach(function (icon, idx) {
+  var iconClassName = icon.className;
+
+  var iconPath = 'img/menu/' + iconClassName + '.svg';
+  var iconNewPath = 'img/menu/' + iconClassName + '_over.svg';
+  var menuCnt = document.querySelector('.menu_cnt');
+
+  icon.addEventListener('mouseenter', function () {
+    icon.src = iconNewPath;
+    icon.style.transform = 'scale(1.3)';
+    icon.style.margin = '0 35px';
+    icon.style.filter = 'drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.6))';
+    menuCnt.style.justifyContent = 'center';
+    icons.forEach((otherIcon) => {
+      if (otherIcon !== icon) {
+        var otherIconClassName = otherIcon.className;
+        var otherIconNotPath = 'img/menu/' + otherIconClassName + '_not.svg';
+        otherIcon.src = otherIconNotPath;
+      }
+    });
+  });
+  icon.addEventListener('mouseleave', function () {
+    icon.src = iconPath;
+    icon.style.transform = 'scale(1)';
+    icon.style.margin = '0 0';
+    icon.style.filter = 'drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3))';
+    this.classList.remove('hovering');
+    icons.forEach((otherIcon) => {
+      if (otherIcon !== icon) {
+        otherIcon.src = 'img/menu/' + otherIcon.className + '.svg';
+      }
+    });
+  });
+});
+
+hwIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 3270, behavior: 'instant' });
+  menuPage.style.transform = 'translateY(-120%)';
+});
+ctIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 33320, behavior: 'instant' });
+  menuPage.style.transform = 'translateY(-120%)';
+});
+
+zdIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 12300, behavior: 'instant' });
+  menuPage.style.transform = 'translateY(-120%)';
+});
+acIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 22000, behavior: 'instant' });
+  menuPage.style.transform = 'translateY(-120%)';
+});
+pkIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 26700, behavior: 'auto' });
+  menuPage.style.transform = 'translateY(-120%)';
 });
 
 // --------------------------------- hero page effect
@@ -25,12 +103,10 @@ var hero = gsap.timeline({
   scrollTrigger: {
     trigger: '.hero',
     start: 'top top',
-    end: 'bottom center',
+    // end: 'bottom center',
     pin: true,
     markers: true,
     scrub: true,
-    toggleActions: 'play none restart none', // 기본값 (onEnter, onLeave, OnEnterBack, onLeaveBack)
-    ease: 'easeOutBack',
 
     // snap: {
     //     snapTo: "labels", // snap to the closest label in the timeline
@@ -70,19 +146,41 @@ hero.fromTo(
   7
 );
 hero.fromTo(
-  '.s_mario, .cap, .main_text, .hero > img, .icon > img:nth-child(2)',
+  '.s_mario, .hero > img, .icon > img:nth-child(2)',
   { y: 1080 },
-  { y: 0, duration: 6 },
+  { y: 0, duration: 15, ease: 'back.out' },
   0
 );
+hero.fromTo(
+  '.cap, .main_text, .NowYoure',
+  { y: 1080 },
+  { y: 0, duration: 15 },
+  4
+);
+
 // icon
-hero.fromTo('.icon > img:nth-child(1)', { y: -150 }, { y: 0, duration: 4 }, 0);
-hero.fromTo('.icon > img:nth-child(3)', { x: -600 }, { x: 0, duration: 2 }, 0);
-hero.fromTo('.icon > img:nth-child(4)', { y: -400 }, { y: 0, duration: 2 }, 0);
+hero.fromTo(
+  '.icon > img:nth-child(1)',
+  { y: -150, rotate: 360 },
+  { y: 0, rotate: 0, duration: 10 },
+  2
+);
+hero.fromTo(
+  '.icon > img:nth-child(3)',
+  { scale: 0 },
+  { scale: 1, duration: 10 },
+  3
+);
+hero.fromTo(
+  '.icon > img:nth-child(4)',
+  { y: -400, opacity: 0 },
+  { y: 0, opacity: 1, duration: 10 },
+  4
+);
 hero.fromTo(
   '.icon > img:nth-child(5), .icon > img:nth-child(6)',
   { y: 1300 },
-  { y: 0, duration: 2 },
+  { y: 0, duration: 10 },
   0
 );
 // outro page effect
@@ -100,27 +198,27 @@ gsap.to(sections, {
     trigger: '.hardware',
     pin: true,
     scrub: 1,
-    snap: 1 / (sections.length - 1),
-    // snap: {
-    //   snapTo: 1 / (sections.length - 1),
-    //   duration: 0.1,
-    //   delay: 0.1,
-    //   ease: 'power1.inOut',
-    // },
+    // snap: 1 / (sections.length - 1),
+    snap: {
+      snapTo: 1 / (sections.length - 1),
+      duration: 0.1,
+      // delay: 0.1,
+      ease: 'power4.Out',
+    },
     end: () => '+=' + document.querySelector('.hardware').offsetWidth,
   },
 });
 
 gsap.fromTo(
-  '.OLED_mask', // 선택자를 해당 섹션에 맞게 변경
-  { scale: 0, x: 100 }, // 시작 스타일
+  '.hw02_c02', // 선택자를 해당 섹션에 맞게 변경
+  { scale: 0 }, // 시작 스타일
   {
     scale: 1,
-    x: 0,
-    duration: 1,
+
+    duration: 3,
     ease: 'power1.inOut',
     scrollTrigger: {
-      trigger: '.hardware01',
+      trigger: '.hardware02',
       // start: '+=100',
       toggleActions: 'play none',
     },
@@ -439,14 +537,14 @@ game.fromTo(
 
 game.fromTo(
   '.line_right',
-  { width: 1539, height: 8 },
-  { width: 0, height: 8, duration: 310, ease: 'none' },
+  { width: 1510, height: 1 },
+  { width: 0, height: 1, duration: 310, ease: 'none' },
   150
 );
 game.fromTo(
   '.line_left',
-  { width: 0 },
-  { width: 1539, duration: 310, ease: 'none' },
+  { width: 0, height: 1 },
+  { width: 1510, height: 1, duration: 310, ease: 'none' },
   150
 );
 
@@ -770,7 +868,7 @@ game.fromTo(
 // ---------------------------------------- quaxly effect
 game.fromTo('.qch', { scale: 0 }, { scale: 1, duration: 10 }, 895);
 game.fromTo('.tq1, .tq2', { opacity: 0 }, { opacity: 1, duration: 10 }, 895);
-game.fromTo('.choose_box', { opacity: 0 }, { opacity: 1, duration: 10 }, 895);
+game.fromTo('.choose_box', { opacity: 0 }, { opacity: 0.5, duration: 10 }, 895);
 game.fromTo(
   '.qbody',
   { y: -10, opacity: 0 },
@@ -1161,7 +1259,7 @@ outro.fromTo(
 outro.fromTo(
   '.l_btmline',
   { width: 800, height: 16 },
-  { width: 81, heigth: 16, duration: 10 },
+  { width: 81, height: 16, duration: 10 },
   8
 );
 
@@ -1191,7 +1289,7 @@ outro.fromTo(
   2
 );
 outro.fromTo('.oicon3', { opacity: 0 }, { opacity: 1, duration: 10 }, 5);
-outro.fromTo('.ocion4', { y: 500 }, { y: 0, duration: 10 }, 2);
+outro.fromTo('.oicon4', { y: 500 }, { y: 0, duration: 10 }, 2);
 outro.fromTo(
   '.oicon7',
   { opacity: 0, rotate: 360 },

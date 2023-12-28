@@ -1,18 +1,7 @@
-<svg width="282" height="242" viewBox="0 0 282 242" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g filter="url(#filter0_d_746_85)">
-<path d="M41.5031 21.3278C43.6468 10.3048 53.3014 2.34692 64.5309 2.34692H266.1C271.018 2.34692 274.715 6.83221 273.776 11.6594L234.416 214.048C232.273 225.071 222.618 233.029 211.389 233.029H9.81948C4.90183 233.029 1.2048 228.544 2.14357 223.716L41.5031 21.3278Z" fill="url(#pattern0)" shape-rendering="crispEdges"/>
-</g>
+<svg width="276" height="235" viewBox="0 0 276 235" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M41.5031 21.3278C43.6468 10.3048 53.3014 2.34692 64.5309 2.34692H266.1C271.018 2.34692 274.715 6.83221 273.776 11.6594L234.416 214.048C232.273 225.071 222.618 233.029 211.389 233.029H9.81948C4.90183 233.029 1.2048 228.544 2.14357 223.716L41.5031 21.3278Z" fill="url(#pattern0)"/>
+<path d="M266.1 1.59692H64.5309C52.9424 1.59692 42.9792 9.80923 40.7669 21.1846L1.40736 223.573C0.37855 228.863 4.43017 233.779 9.81948 233.779H211.389C222.977 233.779 232.94 225.567 235.153 214.191L274.512 11.8026C275.541 6.5124 271.489 1.59692 266.1 1.59692Z" stroke="white" stroke-opacity="0.3" stroke-width="1.5"/>
 <defs>
-<filter id="filter0_d_746_85" x="-0.00268555" y="0.346924" width="281.925" height="240.682" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="3" dy="3"/>
-<feGaussianBlur stdDeviation="2.5"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_746_85"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_746_85" result="shape"/>
-</filter>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_746_85" transform="matrix(0.000721566 0 0 0.000862069 -0.243935 0)"/>
 </pattern>
