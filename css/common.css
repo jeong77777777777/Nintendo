@@ -1,9 +1,6 @@
 /* whole page style */
 .intro,
 .hero,
-.hardware01,
-.hardware02,
-.hardware03_gray,
 .main01,
 .game,
 .game_c,
@@ -28,6 +25,7 @@
 }
 
 .hardware {
+  position: relative;
   display: flex;
   width: 5760px;
 }

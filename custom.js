@@ -189,59 +189,114 @@ hero.fromTo(
 
 gsap.registerPlugin(ScrollTrigger);
 
-let sections = gsap.utils.toArray('.hw');
+const hardwarePage = document.querySelector('.hardware');
+const hw01Page = document.querySelector('.hardware01');
+const hw02Page = document.querySelector('.hardware02');
+const hw03Page = document.querySelector('.hardware03_gray');
 
-gsap.to(sections, {
-  xPercent: -100 * (sections.length - 1),
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '.hardware',
-    pin: true,
-    scrub: 1,
-    // snap: 1 / (sections.length - 1),
-    snap: {
-      snapTo: 1 / (sections.length - 1),
-      duration: 0.1,
-      // delay: 0.1,
-      ease: 'power4.Out',
+// gsap.to('.hardware', {
+//   opacity: 1,
+//   scrollTrigger: {
+//     trigger: '.hardware',
+//     start: 'top top',
+//     end: '+=5000',
+//   },
+// });
+// gsap.set('.hardware03_gray', { x: 1614 });
+function runHwAnimations() {
+  moveHw('.hardware01', 0, -1614, 7, 5);
+  moveHw('.hardware02', 1614, 0, 7, 5);
+  moveHw('.hardware03_gray', 3228, 1614, 7, 5);
+
+  moveHw('.hardware02', 0, -1614, 7, 13);
+  moveHw('.hardware03_gray', 1614, 0, 7, 13);
+
+  moveHw('.hardware03_gray', 0, -1614, 7, 22);
+  moveHw('.hardware01', 1614, 0, 7, 22);
+}
+
+function moveHw(element, startX, endX, duration, delay) {
+  gsap.fromTo(
+    element,
+    {
+      x: startX,
     },
-    end: () => '+=' + document.querySelector('.hardware').offsetWidth,
-  },
+    {
+      x: endX,
+      duration: duration,
+      ease: 'none',
+      repeat: -1, // 무한 반복
+      delay: delay,
+    }
+  );
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  runHwAnimations();
 });
 
-gsap.fromTo(
-  '.hw02_c02', // 선택자를 해당 섹션에 맞게 변경
-  { scale: 0 }, // 시작 스타일
-  {
-    scale: 1,
+// moveHw('.hardware01', 0, -1614, 7, 5);
+// moveHw('.hardware02', 1614, 0, 7, 5);
+// moveHw('.hardware03_gray', 3228, 1614, 7, 5);
 
-    duration: 3,
-    ease: 'power1.inOut',
-    scrollTrigger: {
-      trigger: '.hardware02',
-      // start: '+=100',
-      toggleActions: 'play none',
-    },
-  } // 종료 스타일
-);
+// moveHw('.hardware02', 0, -1614, 7, 13);
+// moveHw('.hardware03_gray', 1614, 0, 7, 13);
+
+// moveHw('.hardware03_gray', 0, -1614, 7, 22);
+// moveHw('.hardware01', 1614, 0, 7, 22);
+
+// let sections = gsap.utils.toArray('.hw');
+
+// gsap.to(sections, {
+//   xPercent: -100 * (sections.length - 1),
+//   ease: 'none',
+//   scrollTrigger: {
+//     trigger: '.hardware',
+//     pin: true,
+//     scrub: 1,
+//     // snap: 1 / (sections.length - 1),
+//     snap: {
+//       snapTo: 1 / (sections.length - 1),
+//       duration: 0.1,
+//       // delay: 0.1,
+//       ease: 'power4.Out',
+//     },
+//     end: () => '+=' + document.querySelector('.hardware').offsetWidth,
+//   },
+// });
+
+// gsap.fromTo(
+//   '.hw02_c02', // 선택자를 해당 섹션에 맞게 변경
+//   { scale: 0 }, // 시작 스타일
+//   {
+//     scale: 1,
+
+//     duration: 3,
+//     ease: 'power1.inOut',
+//     scrollTrigger: {
+//       trigger: '.hardware02',
+//       // start: '+=100',
+//       toggleActions: 'play none',
+//     },
+//   } // 종료 스타일
+// );
 
 // --------------------------------------------- hw03 click event -> color change
 
 const colorPicks = document.querySelectorAll('.pickcolor > *');
 const liteImage = document.querySelector('.lite_gray');
 const circles = document.querySelectorAll('.hardware03_gray > .circles > *');
-const ntdColors = document.querySelectorAll('#Nintendo', '#Nintendo_s');
-const swtColors = document.querySelectorAll('#Switch', '#Switch_s');
-const idColor = document.querySelector('#or03');
+const ntdColors = document.querySelectorAll('.nintendo03 > *');
+const swtColors = document.querySelectorAll('.switch03 > *');
+// const idColor = document.querySelector('#or03');
 
 colorPicks.forEach(function (colorPick) {
-  colorPick.addEventListener('click', function () {
+  colorPick.addEventListener('mouseenter', function () {
     const currentSelected = document.getElementById('selected');
     if (currentSelected) {
       currentSelected.removeAttribute('id');
     }
 
-    // 클릭한 대상에 selected 클래스 추가
     colorPick.id = 'selected';
 
     var colorClassName = colorPick.className;
@@ -258,7 +313,7 @@ colorPicks.forEach(function (colorPick) {
 
     var newIdPath = 'img/hardware/or03_' + colorClassName + '.svg';
 
-    idColor.src = newIdPath;
+    // idColor.src = newIdPath;
 
     // Nintendo와 Switch의 color 속성 변경
     ntdColors.forEach(function (element) {

@@ -3,64 +3,248 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-      }
+    <title>Nintendo</title>
 
-      .section {
-        height: 100vh; /* Adjust the height as needed */
-        padding: 20px;
-        box-sizing: border-box;
-      }
-
-      .prbar {
-        position: relative;
-        height: 30px; /* Adjust the height as needed */
-        background-color: #f00; /* Adjust the background color as needed */
-        transition: position 0.3s ease; /* Add a smooth transition effect */
-      }
-
-      .prbar.fixed {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-
-      /* Add styling for the rest of your sections as needed */
-    </style>
-    <title>Your Web Page</title>
+    <link rel="stylesheet" href="chec.css" />
   </head>
   <body>
-    <div class="section" id="section1">Section 1 Content</div>
-    <div class="section" id="section2">Section 2 Content</div>
-    <div class="section" id="section3">Section 3 Content</div>
-    <div class="section" id="section4">Section 4 Content</div>
-    <div class="section" id="section5">Section 5 Content</div>
-    <div class="section" id="section6">Section 6 Content</div>
-    <div class="section" id="section7">Section 7 Content</div>
-    <div class="section" id="section8">Section 8 Content</div>
-    <div class="section" id="section9">Section 9 Content</div>
-    <div class="section" id="section10">Section 10 Content</div>
+    <div class="wrapper">
+      <!-- nav -->
+      <nav>
+        <img src="./img/nintendo_logo.svg" class="nintendo_logo" alt="" />
+        <img src="./img/menu.svg" class="menu_icon" alt="" />
+      </nav>
+      <!-- menu -->
+      <section class="menu">
+        <div class="close">
+          <img src="./img/menu/close.svg" alt="" />
+        </div>
+        <div class="menu_cnt">
+          <img src="./img/menu/hwicon.svg" class="hwicon" alt="" />
+          <img src="./img/menu/zdicon.svg" class="zdicon" alt="" />
+          <img src="./img/menu/acicon.svg" class="acicon" alt="" />
+          <img src="./img/menu/pkicon.svg" class="pkicon" alt="" />
+          <img src="./img/menu/cticon.svg" class="cticon" alt="" />
+        </div>
+      </section>
 
-    <div class="prbar" id="prbar">Progress Bar</div>
+      <!-- intro -->
+      <section class="intro">
+        <div class="nav_box">
+          <img src="./img/nintendo_logo_white.svg" alt="" />
+          <img src="./img/menu.svg" alt="" />
+        </div>
+        <video src="./video/intro.mp4" autoplay muted loop></video>
+      </section>
 
-    <script>
-      window.addEventListener('scroll', function () {
-        var section7 = document.getElementById('section7');
-        var prbar = document.getElementById('prbar');
+      <!-- hero -->
+      <section class="hero">
+        <div class="s_mario">
+          <div class="blank"></div>
+          <img src="./img/hero/mario.svg" alt="" />
+        </div>
+        <!-- <img src="./img/hero/NowYou_re.svg" alt="" /> -->
+        <div class="NowYoure">Now You're Playing with Power</div>
+        <div class="icon">
+          <img src="./img/hero/icon/circle.svg" alt="" /><img
+            src="./img/hero/icon/lineicon.svg"
+            alt=""
+          /><img src="./img/hero/icon/Polygon.svg" alt="" /><img
+            src="./img/hero/icon/Rectangle.svg"
+            alt=""
+          /><img src="./img/hero/icon/plus.svg" alt="" /><img
+            src="./img/hero/icon/circleline.svg"
+            alt=""
+          />
+        </div>
+        <div class="main_text">
+          <p>with</p>
+          <p>ANYONE</p>
+        </div>
+        <div class="cap">
+          <p>
+            Nintendo's mission is to put smiles on the faces of everyone we
+            touch.
+          </p>
+        </div>
+        <div class="play">
+          <img src="./img/hero/play/p.svg" alt="" /><img
+            src="./img/hero/play/l.svg"
+            alt=""
+          /><img src="./img/hero/play/a.svg" alt="" /><img
+            src="./img/hero/play/y.svg"
+            alt=""
+          />
+        </div>
+        <div class="anywhere">
+          <img src="./img/hero/anywhere/anyw.svg" alt="" />
+          <div class="h">
+            <img src="./img/hero/anywhere/h_line_left.svg" alt="" />
+            <div class="hcenter"></div>
+            <img
+              src="./img/hero/anywhere/h_line_right.svg"
+              class="hright"
+              alt=""
+            />
+          </div>
+          <img src="./img/hero/anywhere/ere.svg" alt="" />
+        </div>
+        <div class="anytime">
+          <img src="./img/hero/anytim.svg" alt="" />
+          <div class="e">
+            <img src="./img/hero/e_line_left.svg" alt="" />
+            <div class="lines">
+              <div class="e_top">
+                <div class="etop"></div>
+                <img src="./img/hero/topedge.svg" class="topedge" alt="" />
+              </div>
+              <div class="e_center">
+                <div class="ecenter"></div>
+                <img src="./img/hero/topedge.svg" class="ctedge" alt="" />
+              </div>
+              <div class="e_bottom">
+                <div class="ebtm"></div>
+                <img src="./img/hero/btmedge.svg" class="btmedge" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aw_line"></div>
+        <div class="at_line"></div>
+      </section>
 
-        var scrollPosition = window.scrollY;
+      <!-- hardware -->
 
-        if (scrollPosition >= section7.offsetTop) {
-          prbar.classList.add('fixed');
-        } else {
-          prbar.classList.remove('fixed');
-        }
-      });
-    </script>
+      <section class="hardware">
+        <div class="arrowbox_left">
+          <img
+            src="img/hardware/The Best Play Here.svg"
+            class="thebest"
+            alt=""
+          />
+        </div>
+        <div class="hardwarebox">
+          <div class="hw hardware01">
+            <img
+              src="./img/hardware/switch_shadow.svg"
+              class="switch_shadow"
+              alt=""
+            />
+            <p class="OLED_text">OLED</p>
+            <div class="circles">
+              <img
+                src="./img/hardware/hw01_c02.svg"
+                alt=""
+                class="hw01_c02"
+              /><img
+                src="./img/hardware/hw01_c03.svg"
+                alt=""
+                class="hw01_c03"
+              />
+            </div>
+
+            <div class="title">
+              <p class="Switch_s">Switch</p>
+              <p class="Switch">Switch</p>
+              <img
+                src="./img/hardware/main_nintendo_oled.svg"
+                class="oled"
+                alt=""
+              />
+              <p class="Nintendo_s">Nintendo</p>
+              <p class="Nintendo">Nintendo</p>
+            </div>
+
+            <img src="./img/hardware/OLED_mask.svg" class="OLED_mask" alt="" />
+            <p class="cap">
+              Level up with an OLED screen that makes colors pop.
+            </p>
+          </div>
+          <div class="hw hardware02">
+            <img
+              src="./img/hardware/switch_shadow.svg"
+              class="switch_shadow"
+              alt=""
+            />
+
+            <div class="circles">
+              <img src="./img/hardware/hw02_c01.svg" class="hw02_c01" alt="" />
+              <img src="./img/hardware/hw02_c02.svg" class="hw02_c02" alt="" />
+              <img src="./img/hardware/hw02_c03.svg" class="hw02_c03" alt="" />
+            </div>
+
+            <p class="Nintendo_s">Nintendo</p>
+            <p class="Switch_s">Switch</p>
+
+            <p class="Switch">Switch</p>
+            <img
+              src="./img/hardware/switch_mask.svg"
+              class="switch_mask"
+              alt=""
+            />
+            <img
+              src="./img/hardware/main_nintendo_switch.svg"
+              class="switch"
+              alt=""
+            />
+            <p class="Nintendo">Nintendo</p>
+            <p class="cap">Play at home or on the go with one system.</p>
+          </div>
+          <div class="hw hardware03_gray">
+            <div class="circles">
+              <img src="./img/hardware/circle_gray01.svg" class="01" alt="" />
+              <img src="./img/hardware/circle_gray02.svg" class="02" alt="" />
+              <img src="./img/hardware/circle_gray03.svg" class="03" alt="" />
+              <img src="./img/hardware/circle_gray04.svg" class="04" alt="" />
+            </div>
+
+            <span id="Switch_s">Switch</span>
+            <span id="Switch">Switch</span>
+            <img src="./img/hardware/lite_gray.svg" class="lite_gray" alt="" />
+            <p id="Nintendo_s">Nintendo</p>
+            <p id="Nintendo">Nintendo</p>
+
+            <p class="cap">Dedicated to portable play.</p>
+            <span>Pick your color</span>
+            <div class="color_palette"></div>
+
+            <div class="pickcolor">
+              <div class="yellow"></div>
+              <div class="cyan"></div>
+              <div class="pink"></div>
+              <div class="gray" id="selected"></div>
+              <div class="blue"></div>
+            </div>
+          </div>
+        </div>
+        <div class="arrowbox_right">
+          <img src="img/hardware/next_icon.svg" class="next_icon" alt="" />
+        </div>
+      </section>
+    </div>
+
+    <!-- script link -->
+    <!-- 
+      
+     -->
+    <!-- GSAP -->
+    <script src="https://unpkg.com/gsap@3.9.0/dist/gsap.min.js"></script>
+
+    <!-- ScrollTrigger/Text/Ease (GSAP에 포함) -->
+    <script src="https://unpkg.com/gsap@3.9.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/EasePack.min.js"></script>
+    <!-- <script src="js/gsap.js"></script>
+    <script src="js/scrollTrigger.js"></script> -->
+    <script src="js/scrollbar.js"></script>
+    <script src="check.js"></script>
   </body>
 </html>
+
+<!-- hw01 arrow 부분 수정 -->
+<!-- hw id -->
+<!-- zelda1,2,3,4 추가 -->
+<!-- 가로스크롤 인터렉션 -->
+<!-- intro nav box -->
+
+<!-- joycon change -->
