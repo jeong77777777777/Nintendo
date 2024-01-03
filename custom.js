@@ -1,3 +1,15 @@
+//  nav
+const nintendoLogo = document.querySelector('.nintendo_logo');
+window.addEventListener('scroll', function () {
+  var scrollPosition = window.scrollY;
+
+  if (scrollPosition >= 1000) {
+    nintendoLogo.style.opacity = 1;
+  } else {
+    nintendoLogo.style.opacity = 0;
+  }
+});
+
 // --------------------------------- menu page
 
 const menuIcon = document.querySelector('.menu_icon');
@@ -14,16 +26,16 @@ menuClose.addEventListener('click', function () {
 
 // ----------------------------------- menu click
 
-// const ww = document.body.offsetWidth;
-// // console.log(ww);
-// console.log(Math.floor((123 / 1876) * 200));
+const ww = document.body.offsetWidth;
+// console.log(ww);
+console.log(Math.floor((123 / 1876) * 200));
 
-// window.addEventListener('mousemove', function (event) {
-//   console.log(event.pageY);
+window.addEventListener('mousemove', function (event) {
+  console.log(event.pageY);
 
-//   // 1000px : 화면크기
-//   // 100px : 마우스 커서 위치
-// });
+  // 1000px : 화면크기
+  // 100px : 마우스 커서 위치
+});
 
 const hwIcon = document.querySelector('.hwicon');
 const zdIcon = document.querySelector('.zdicon');
@@ -59,6 +71,7 @@ icons.forEach(function (icon, idx) {
     icon.style.transform = 'scale(1)';
     icon.style.margin = '0 0';
     icon.style.filter = 'drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3))';
+
     this.classList.remove('hovering');
     icons.forEach((otherIcon) => {
       if (otherIcon !== icon) {
@@ -68,29 +81,61 @@ icons.forEach(function (icon, idx) {
   });
 });
 
-hwIcon.addEventListener('click', function () {
-  window.scrollTo({ top: 3270, behavior: 'instant' });
-  menuPage.style.transform = 'translateY(-120%)';
+const zdTitle = document.querySelector('.menu_title_zd');
+const acTitle = document.querySelector('.menu_title_ac');
+const pkTitle = document.querySelector('.menu_title_pk');
+
+zdIcon.addEventListener('mouseenter', function () {
+  zdTitle.style.opacity = 1;
+  zdTitle.style.transform = 'translateY(30px)';
 });
-ctIcon.addEventListener('click', function () {
-  window.scrollTo({ top: 33320, behavior: 'instant' });
-  menuPage.style.transform = 'translateY(-120%)';
+acIcon.addEventListener('mouseenter', function () {
+  acTitle.style.opacity = 1;
+  acTitle.style.transform = 'translateY(30px)';
+});
+pkIcon.addEventListener('mouseenter', function () {
+  pkTitle.style.opacity = 1;
+  pkTitle.style.transform = 'translateY(30px)';
+});
+zdIcon.addEventListener('mouseleave', function () {
+  zdTitle.style.opacity = 0;
+  zdTitle.style.transform = 'translateY(-30px)';
+});
+acIcon.addEventListener('mouseleave', function () {
+  acTitle.style.opacity = 0;
+  acTitle.style.transform = 'translateY(-30px)';
+});
+pkIcon.addEventListener('mouseleave', function () {
+  pkTitle.style.opacity = 0;
+  pkTitle.style.transform = 'translateY(-30px)';
 });
 
+// click
+
+hwIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 2640, behavior: 'instant' });
+  menuPage.style.transform = 'translateY(-120%)';
+});
 zdIcon.addEventListener('click', function () {
-  window.scrollTo({ top: 12300, behavior: 'instant' });
+  window.scrollTo({ top: 5705, behavior: 'instant' });
   menuPage.style.transform = 'translateY(-120%)';
 });
 acIcon.addEventListener('click', function () {
-  window.scrollTo({ top: 22000, behavior: 'instant' });
+  window.scrollTo({ top: 12748, behavior: 'instant' });
   menuPage.style.transform = 'translateY(-120%)';
 });
 pkIcon.addEventListener('click', function () {
-  window.scrollTo({ top: 26700, behavior: 'auto' });
+  window.scrollTo({ top: 17220, behavior: 'auto' });
+  menuPage.style.transform = 'translateY(-120%)';
+});
+ctIcon.addEventListener('click', function () {
+  window.scrollTo({ top: 24100, behavior: 'instant' });
   menuPage.style.transform = 'translateY(-120%)';
 });
 
 // --------------------------------- hero page effect
+
+gsap.registerPlugin(ScrollTrigger);
 
 window.scrollTo(0, 0);
 
@@ -103,10 +148,12 @@ var hero = gsap.timeline({
   scrollTrigger: {
     trigger: '.hero',
     start: 'top top',
-    // end: 'bottom center',
+    end: 'bottom center',
     pin: true,
-    markers: true,
-    scrub: true,
+    markers: false,
+    scrub: false,
+    snap: 1,
+    toggleActions: 'play none reverse reverse',
 
     // snap: {
     //     snapTo: "labels", // snap to the closest label in the timeline
@@ -118,177 +165,173 @@ var hero = gsap.timeline({
 hero.fromTo(
   '.play > img:nth-child(1)',
   { x: -1125 },
-  { x: -53, duration: 10 },
+  { x: -53, duration: 1.5 },
   0
 );
 
-hero.fromTo('.play > img:nth-child(2)', { x: -810 }, { x: 0, duration: 10 }, 0);
-hero.fromTo('.play > img:nth-child(3)', { x: 1910 }, { x: 0, duration: 10 }, 0);
-hero.fromTo('.play > img:nth-child(4)', { x: 3300 }, { x: 0, duration: 10 }, 0);
-hero.fromTo('.anywhere, .aw_line', { x: 1609 }, { x: 0, duration: 15 }, 3);
-hero.fromTo('.anytime, .at_line', { x: 1800 }, { x: 0, duration: 15 }, 5);
+hero.fromTo(
+  '.play > img:nth-child(2)',
+  { x: -810 },
+  { x: 0, duration: 1.5 },
+  0
+);
+hero.fromTo(
+  '.play > img:nth-child(3)',
+  { x: 1910 },
+  { x: 0, duration: 1.5 },
+  0
+);
+hero.fromTo(
+  '.play > img:nth-child(4)',
+  { x: 3300 },
+  { x: 0, duration: 1.5 },
+  0
+);
+hero.fromTo('.anywhere, .aw_line', { x: 1609 }, { x: 0, duration: 1.5 }, 0.5);
+hero.fromTo('.anytime, .at_line', { x: 1800 }, { x: 0, duration: 1.5 }, 0.5);
 hero.fromTo(
   '.hcenter',
   { width: 800, height: 28 },
-  { width: 84, height: 28, duration: 15 },
-  5
+  { width: 84, height: 28, duration: 1.5 },
+  0.5
 );
 hero.fromTo(
   '.etop, .ecenter',
   { width: 800, height: 28 },
-  { width: 81, height: 28, duration: 15 },
-  7
+  { width: 81, height: 28, duration: 1.5 },
+  0.5
 );
 hero.fromTo(
   '.ebtm',
   { width: 800, height: 16 },
-  { width: 81, height: 16, duration: 15 },
-  7
+  { width: 81, height: 16, duration: 1.5 },
+  0.5
 );
 hero.fromTo(
   '.s_mario, .hero > img, .icon > img:nth-child(2)',
   { y: 1080 },
-  { y: 0, duration: 15, ease: 'back.out' },
-  0
+  { y: 0, duration: 1.5, ease: 'back.out' },
+  0.5
 );
 hero.fromTo(
   '.cap, .main_text, .NowYoure',
   { y: 1080 },
-  { y: 0, duration: 15 },
-  4
+  { y: 0, duration: 1.5 },
+  0
 );
 
 // icon
 hero.fromTo(
   '.icon > img:nth-child(1)',
   { y: -150, rotate: 360 },
-  { y: 0, rotate: 0, duration: 10 },
-  2
+  { y: 0, rotate: 0, duration: 1.5 },
+  0
 );
 hero.fromTo(
   '.icon > img:nth-child(3)',
   { scale: 0 },
-  { scale: 1, duration: 10 },
-  3
+  { scale: 1, duration: 1.5 },
+  1
 );
 hero.fromTo(
   '.icon > img:nth-child(4)',
   { y: -400, opacity: 0 },
-  { y: 0, opacity: 1, duration: 10 },
-  4
+  { y: 0, opacity: 1, duration: 1.5 },
+  0.5
 );
 hero.fromTo(
   '.icon > img:nth-child(5), .icon > img:nth-child(6)',
   { y: 1300 },
-  { y: 0, duration: 10 },
+  { y: 0, duration: 1.5 },
   0
 );
 // outro page effect
 
-// --------------------------------- hardware page horizontal scroll
+// --------------------------------- hardware page loop slide
 
 gsap.registerPlugin(ScrollTrigger);
 
-const hardwarePage = document.querySelector('.hardware');
-const hw01Page = document.querySelector('.hardware01');
-const hw02Page = document.querySelector('.hardware02');
-const hw03Page = document.querySelector('.hardware03_gray');
+const slider = document.querySelector('.hardwarebox');
+const slides = document.querySelectorAll('.hw');
+const colorBox = document.querySelector('.pickcolor');
+const backIcon = document.querySelector('.back_icon');
+const nextIcon = document.querySelector('.next_icon');
 
-// gsap.to('.hardware', {
-//   opacity: 1,
-//   scrollTrigger: {
-//     trigger: '.hardware',
-//     start: 'top top',
-//     end: '+=5000',
-//   },
-// });
-// gsap.set('.hardware03_gray', { x: 1614 });
-function runHwAnimations() {
-  moveHw('.hardware01', 0, -1614, 7, 5);
-  moveHw('.hardware02', 1614, 0, 7, 5);
-  moveHw('.hardware03_gray', 3228, 1614, 7, 5);
+const hwIds = document.querySelectorAll('.hw_id > *');
 
-  moveHw('.hardware02', 0, -1614, 7, 13);
-  moveHw('.hardware03_gray', 1614, 0, 7, 13);
+let currentIndex = 0;
+let isMouseOverColorBox = false;
 
-  moveHw('.hardware03_gray', 0, -1614, 7, 22);
-  moveHw('.hardware01', 1614, 0, 7, 22);
+const slideColors = ['#d42d26', '#00BEDF', '#4D4D4D'];
+
+updateSlider();
+
+function updateSlider() {
+  slider.style.transform = `translateX(${-currentIndex * 1614}px)`;
+
+  hwIds.forEach((element, index) => {
+    const isActive = index === currentIndex;
+    const width = isActive ? '210px' : '9px';
+    const backgroundColor = isActive ? slideColors[index] : '#CCC';
+
+    element.style.width = width;
+    element.style.backgroundColor = backgroundColor;
+  });
 }
 
-function moveHw(element, startX, endX, duration, delay) {
-  gsap.fromTo(
-    element,
-    {
-      x: startX,
-    },
-    {
-      x: endX,
-      duration: duration,
-      ease: 'none',
-      repeat: -1, // 무한 반복
-      delay: delay,
-    }
-  );
+function nextSlide() {
+  if (!isMouseOverColorBox) {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlider();
+  }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  runHwAnimations();
+function prevSlide() {
+  if (!isMouseOverColorBox) {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateSlider();
+  }
+}
+
+function handleMouseOverColorBox() {
+  isMouseOverColorBox = true;
+}
+
+function handleMouseOutColorBox() {
+  isMouseOverColorBox = false;
+}
+
+setInterval(nextSlide, 3500);
+
+colorBox.addEventListener('mouseenter', handleMouseOverColorBox);
+colorBox.addEventListener('mouseleave', handleMouseOutColorBox);
+
+backIcon.addEventListener('click', function () {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  updateSlider();
 });
 
-// moveHw('.hardware01', 0, -1614, 7, 5);
-// moveHw('.hardware02', 1614, 0, 7, 5);
-// moveHw('.hardware03_gray', 3228, 1614, 7, 5);
+nextIcon.addEventListener('click', function () {
+  currentIndex = (currentIndex + 1) % slides.length;
+  updateSlider();
+});
 
-// moveHw('.hardware02', 0, -1614, 7, 13);
-// moveHw('.hardware03_gray', 1614, 0, 7, 13);
-
-// moveHw('.hardware03_gray', 0, -1614, 7, 22);
-// moveHw('.hardware01', 1614, 0, 7, 22);
-
-// let sections = gsap.utils.toArray('.hw');
-
-// gsap.to(sections, {
-//   xPercent: -100 * (sections.length - 1),
-//   ease: 'none',
-//   scrollTrigger: {
-//     trigger: '.hardware',
-//     pin: true,
-//     scrub: 1,
-//     // snap: 1 / (sections.length - 1),
-//     snap: {
-//       snapTo: 1 / (sections.length - 1),
-//       duration: 0.1,
-//       // delay: 0.1,
-//       ease: 'power4.Out',
-//     },
-//     end: () => '+=' + document.querySelector('.hardware').offsetWidth,
-//   },
-// });
-
-// gsap.fromTo(
-//   '.hw02_c02', // 선택자를 해당 섹션에 맞게 변경
-//   { scale: 0 }, // 시작 스타일
-//   {
-//     scale: 1,
-
-//     duration: 3,
-//     ease: 'power1.inOut',
-//     scrollTrigger: {
-//       trigger: '.hardware02',
-//       // start: '+=100',
-//       toggleActions: 'play none',
-//     },
-//   } // 종료 스타일
-// );
+gsap.to('.oled, .switch, .lite_gray', {
+  y: 50,
+  duration: 1,
+  ease: 'power2.inOut',
+  yoyo: true,
+  repeat: -1, // -1로 설정하여 무한 반복
+});
 
 // --------------------------------------------- hw03 click event -> color change
 
 const colorPicks = document.querySelectorAll('.pickcolor > *');
 const liteImage = document.querySelector('.lite_gray');
-const circles = document.querySelectorAll('.hardware03_gray > .circles > *');
+const circles = document.querySelectorAll('.hardware03_gray > .circle');
 const ntdColors = document.querySelectorAll('.nintendo03 > *');
 const swtColors = document.querySelectorAll('.switch03 > *');
-// const idColor = document.querySelector('#or03');
+const idColor = document.querySelector('.id_hw03');
 
 colorPicks.forEach(function (colorPick) {
   colorPick.addEventListener('mouseenter', function () {
@@ -310,10 +353,6 @@ colorPicks.forEach(function (colorPick) {
         'img/hardware/circle_' + colorClassName + '0' + (index + 1) + '.svg';
       circle.src = newCirclePath;
     });
-
-    var newIdPath = 'img/hardware/or03_' + colorClassName + '.svg';
-
-    // idColor.src = newIdPath;
 
     // Nintendo와 Switch의 color 속성 변경
     ntdColors.forEach(function (element) {
@@ -337,6 +376,26 @@ colorPicks.forEach(function (colorPick) {
           element.style.color = '#4D4D4D';
       }
     });
+
+    switch (colorClassName) {
+      case 'gray':
+        idColor.style.backgroundColor = '#4D4D4D';
+        break;
+      case 'yellow':
+        idColor.style.backgroundColor = '#F0AD00';
+        break;
+      case 'pink':
+        idColor.style.backgroundColor = '#FF3B4A';
+        break;
+      case 'blue':
+        idColor.style.backgroundColor = '#072385';
+        break;
+      case 'cyan':
+        idColor.style.backgroundColor = '#00B4B7';
+        break;
+      default:
+        idColor.style.backgroundColor = '#4D4D4D';
+    }
 
     swtColors.forEach(function (element) {
       switch (colorClassName) {
@@ -362,6 +421,15 @@ colorPicks.forEach(function (colorPick) {
   });
 });
 
+const pickText = document.querySelector('.picktext');
+
+setInterval(() => {
+  pickText.style.display = 'block';
+
+  setTimeout(() => {
+    pickText.style.display = 'none';
+  }, 1000);
+}, 1500);
 // -------------------------------------------------- main01 scroll
 
 gsap.registerPlugin(ScrollTrigger);
@@ -395,61 +463,36 @@ var game = gsap.timeline({
   scrollTrigger: {
     trigger: '.game',
     start: 'top top',
-    end: '+=20000',
-    // end: "bottom bottom",
-    scrub: 1,
-    // startTrigger: "#fixedContent",
+    end: '+=17000px',
+    scrub: 0.1,
     pin: true,
-    // endStart: "top center",
-    ease: 'slow(0.7, 0.7, false)',
+    // markers: true,
   },
 });
 
-game.fromTo(
-  '.switchImage > .s_right',
-  { y: -160 },
-  { y: 0, duration: 10, ease: 'slow(0.7, 0.7, false)' },
-  0
-);
+game.fromTo('.switchImage > .s_right', { y: -160 }, { y: 0, duration: 20 }, 0);
 
-game.fromTo('.switchImage', { scale: 1 }, { scale: 1.1, duration: 10 }, 30);
+game.fromTo('.switchImage', { scale: 1 }, { scale: 1.1, duration: 20 }, 20);
 
-game.fromTo('.switch_bg', { opacity: 0 }, { opacity: 1, duration: 10 }, 40);
+game.fromTo('.switch_bg', { opacity: 0 }, { opacity: 1, duration: 20 }, 40);
 
-game.fromTo('.select', { opacity: 0 }, { opacity: 1, duration: 10 }, 50);
-// game.fromTo(
-//   '.switch_bg .thumbnail, .select',
-//   { opacity: 1 },
-//   { opacity: 0, duration: 10 },
-//   40
-// );
-// game.fromTo(
-//   '.switch_bg',
-//   { backgroundColor: '#ffffff' },
-//   { backgroundColor: 'black', duration: 3 },
-//   40
-// );
-game.fromTo('.zelda_video', { opacity: 0 }, { opacity: 1, duration: 3 }, 60);
-game.fromTo('.zelda_logo', { opacity: 0 }, { opacity: 1, duration: 10 });
-game.fromTo('.zelda_logo', { opacity: 1 }, { opacity: 0, duration: 10 });
-game.fromTo(
-  '.switchImage',
-  { scale: 1.1 },
-  { scale: 2.53, duration: 10, ease: 'slow(0.7, 0.7, false)' },
-  90
-);
+game.fromTo('.select', { opacity: 0 }, { opacity: 1, duration: 20 }, 60);
+game.fromTo('.zelda_video', { opacity: 0 }, { opacity: 1, duration: 20 }, 80);
+game.fromTo('.zelda_logo', { opacity: 0 }, { opacity: 1, duration: 15 }, 100);
+game.fromTo('.zelda_logo', { opacity: 1 }, { opacity: 0, duration: 15 }, 125);
+game.fromTo('.switchImage', { scale: 1.1 }, { scale: 2.53, duration: 15 }, 145);
 game.fromTo(
   '.switch_bg, .zelda_video',
   { scale: 1 },
-  { scale: 2.3, duration: 10, ease: 'slow(0.7, 0.7, false)' },
-  90
+  { scale: 2.3, duration: 15 },
+  145
 );
 
 // ----------------------------------------- zelda full page effect -------------------
 
-const zeldaVideo = document.querySelector('.zelda_video');
+// const zeldaVideo = document.querySelector('.zelda_video');
 
-zeldaVideo.playbackRate = 0.3;
+// zeldaVideo.playbackRate = 0.8;
 
 const zeldaRing = document.querySelector('.zelda_cnt > img:nth-child(1)');
 
@@ -461,131 +504,150 @@ gsap.to(zeldaRing, {
   repeatDelay: 3, // 반복 사이 딜레이
   ease: 'power1.inOut', // 타이밍 함수 설정
 });
+game.fromTo(
+  '.zelda1',
+  { opacity: 0, rotate: 0 },
+  { opacity: 1, rotate: 360, duration: 150 },
+  350
+);
+game.fromTo(
+  '.zelda3',
+  { rotate: 0, opacity: 1, x: 0 },
+  { x: 500, rotate: 360, opacity: 0, duration: 200, ease: 'none' },
+  170
+);
+game.fromTo('.zelda2', { opacity: 1 }, { opacity: 0, duration: 70 }, 200);
+game.fromTo(
+  '.zelda4',
+  { opacity: 0, y: -150 },
+  { opacity: 1, y: 0, duration: 150 },
+  270
+);
+game.fromTo('.bg_shadow', { opacity: 0 }, { opacity: 1, duration: 5 }, 160);
 
-game.fromTo('.bg_shadow', { opacity: 0 }, { opacity: 1, duration: 5 }, 130);
 game.fromTo(
   '.card > *, .zelda_cnt > img:nth-child(1), .zelda_text, .zelda_id',
   { opacity: 0 },
-  { opacity: 1, duration: 5 },
-  140
+  { opacity: 1, duration: 10 },
+  160
 );
 
 game.fromTo(
   '.zelda_cnt .factor',
   { opacity: 0 },
-  { opacity: 1, duration: 15 },
-  140
+  { opacity: 1, duration: 5 },
+  160
 );
 // --------------------------------------------------- card01 rotate
-game.fromTo('.card01', { rotateY: 0 }, { rotateY: 90, duration: 5 }, 160);
+game.fromTo('.card01', { rotateY: 0 }, { rotateY: 270, duration: 20 }, 180);
 game.fromTo(
   '.card01bhd, .card01body, .create, .eyes, .line_c',
   { rotateY: -90 },
-  { rotateY: 0, duration: 5 },
-  170
+  { rotateY: 0, duration: 20 },
+  200
 );
 
 game.fromTo(
   '.card01bhd, .card01body, .create, .eyes, .line_c',
   { rotateY: 0 },
-  { rotateY: 90, duration: 5 },
-  190
+  { rotateY: 270, duration: 20 },
+  240
 );
-game.fromTo('.card01', { rotateY: -90 }, { rotateY: 0, duration: 5 }, 200);
+game.fromTo('.card01', { rotateY: -90 }, { rotateY: 0, duration: 20 }, 260);
 
 // --------------------------------------------------- card 위치 변경_1
 
 game.fromTo(
   '.card01',
   { x: 0, y: 0, zIndex: 100, scale: 1 },
-  { x: -625, y: 60, zIndex: 0, duration: 10, scale: 0.46 },
-  210
+  { x: -625, y: 60, zIndex: 0, duration: 20, scale: 0.46 },
+  290
 );
 
 game.fromTo(
   '.card02',
   { x: 0, y: 0, zIndex: 70, scale: 1 },
-  { x: -637, y: -59, zIndex: 120, scale: 2.2, duration: 10 },
-  210
+  { x: -637, y: -59, zIndex: 120, scale: 2.2, duration: 20 },
+  290
 );
 
 game.fromTo(
   '.card03',
   { x: 0, zIndex: 10 },
-  { x: 1261, zIndex: 0, duration: 10 },
-  210
+  { x: 1261, zIndex: 0, duration: 20 },
+  290
 );
 
 // --------------------------------------------------- card02 rotate
 
-game.fromTo('.card02', { rotateY: 0 }, { rotateY: 90, duration: 5 }, 250);
+game.fromTo('.card02', { rotateY: 0 }, { rotateY: 270, duration: 20 }, 320);
 game.fromTo(
   '.card02bhd, .card02body, .explore, .eyes, .line_c',
   { rotateY: -90 },
-  { rotateY: 0, duration: 5 },
-  260
+  { rotateY: 0, duration: 20 },
+  340
 );
 
 game.fromTo(
   '.card02bhd, .card02body, .explore, .eyes, .line_c',
   { rotateY: 0 },
-  { rotateY: 90, duration: 5 },
-  290
+  { rotateY: 270, duration: 20 },
+  380
 );
-game.fromTo('.card02', { rotateY: -90 }, { rotateY: 0, duration: 5 }, 300);
+game.fromTo('.card02', { rotateY: -90 }, { rotateY: 0, duration: 20 }, 400);
 
 // -------------------------------------------------- card 위치변경_2
 
 game.fromTo(
   '.card01',
   { x: -625, y: 60, zIndex: 0, scale: 0.46 },
-  { x: 632, zIndex: 0, duration: 10 },
-  350
+  { x: 632, zIndex: 0, duration: 20 },
+  430
 );
 
 game.fromTo(
   '.card02',
   { x: -637, y: -59, zIndex: 100, scale: 2.2 },
-  { x: -1265, y: 0, scale: 1, zIndex: 10, duration: 10 },
-  350
+  { x: -1265, y: 0, scale: 1, zIndex: 10, duration: 20 },
+  430
 );
 game.fromTo(
   '.card03',
   { x: 1261, zIndex: 100 },
-  { scale: 2.2, x: 627, y: -55, zIndex: 10000, duration: 10 },
-  350
+  { scale: 2.2, x: 627, y: -55, zIndex: 10000, duration: 20 },
+  430
 );
 
 // --------------------------------------------------- card03 rotate
-game.fromTo('.card03', { rotateY: 0 }, { rotateY: 90, duration: 5 }, 400);
+game.fromTo('.card03', { rotateY: 0 }, { rotateY: 270, duration: 20 }, 460);
 game.fromTo(
   '.card03bhd, .card03body, .discover, .eyes, .line_c',
   { rotateY: -90 },
-  { rotateY: 0, duration: 5 },
-  410
+  { rotateY: 0, duration: 20 },
+  480
 );
 
 game.fromTo(
   '.card03bhd, .card03body, .discover, .eyes, .line_c',
   { rotateY: 0 },
-  { rotateY: 90, duration: 5 },
-  440
+  { rotateY: 270, duration: 20 },
+  520
 );
-game.fromTo('.card03', { rotateY: -90 }, { rotateY: 0, duration: 5 }, 450);
+game.fromTo('.card03', { rotateY: -90 }, { rotateY: 0, duration: 20 }, 540);
 
 // --------------------------------------------------- 배경 text effect
 
 game.fromTo(
   '.zelda_text > img:nth-child(1)',
-  { x: 0 },
-  { x: -500, duration: 350 },
-  140
+  { x: -200 },
+  { x: 600, duration: 400 },
+  160
 );
 game.fromTo(
   '.zelda_text > img:nth-child(2)',
   { x: 0 },
-  { x: 100, duration: 350 },
-  140
+  { x: 100, duration: 400 },
+  160
 );
 
 // --------------------------------------------------- zelda id effect
@@ -593,60 +655,98 @@ game.fromTo(
 game.fromTo(
   '.line_right',
   { width: 1510, height: 1 },
-  { width: 0, height: 1, duration: 310, ease: 'none' },
-  150
+  { width: 0, height: 1, duration: 380, ease: 'none' },
+  180
 );
 game.fromTo(
   '.line_left',
   { width: 0, height: 1 },
-  { width: 1510, height: 1, duration: 310, ease: 'none' },
-  150
+  { width: 1510, height: 1, duration: 380, ease: 'none' },
+  180
 );
 
 // --------------------------------------------------- zelda game end
 
-game.fromTo(
-  '.switchImage',
-  { scale: 2.53 },
-  { scale: 1.1, duration: 20, ease: 'slow(0.7, 0.7, false)' },
-  470
-);
+game.fromTo('.switchImage', { scale: 2.53 }, { scale: 1.1, duration: 15 }, 580);
 
 game.fromTo(
   '.switch_bg, .zelda_video',
   { scale: 2.3, opacity: 1 },
-  { scale: 1, opacity: 0, duration: 20, ease: 'slow(0.7, 0.7, false)' },
-  470
+  { scale: 1, opacity: 0, duration: 15 },
+  580
 );
 
-game.fromTo('.zelda_cnt', { opacity: 1 }, { opacity: 0, duration: 5 }, 470);
+game.fromTo('.zelda_cnt', { opacity: 1 }, { opacity: 0, duration: 10 }, 580);
+// ------------------------------------------------- joycon change
+
+game.fromTo('.s_right', { y: 0 }, { y: -780, duration: 30 }, 600);
+game.fromTo('.s_left', { y: 0 }, { y: -780, duration: 30 }, 600);
+game.fromTo('.s_right', { y: -780 }, { y: 0, duration: 30 }, 630);
+game.fromTo('.s_left', { y: -780 }, { y: 0, duration: 30 }, 630);
+
+// ---------------------------------------------- joycon change
+
+window.addEventListener('scroll', function () {
+  const targetScrollPosition1 = 12130;
+  const targetScrollPosition2 = 16499;
+
+  const currentScrollPosition =
+    window.pageYOffset || document.documentElement.scrollTop;
+
+  const sRight = document.querySelector('.s_right');
+  const sLeft = document.querySelector('.s_left');
+
+  if (currentScrollPosition > targetScrollPosition2) {
+    if (sRight) {
+      const rightNewPath = 'img/game/pk_right.svg';
+      sRight.src = rightNewPath;
+    }
+    if (sLeft) {
+      const leftNewPath = 'img/game/pk_left.svg';
+      sLeft.src = leftNewPath;
+    }
+  } else if (currentScrollPosition > targetScrollPosition1) {
+    if (sRight) {
+      const rightNewPath = 'img/game/ac_right.svg';
+      sRight.src = rightNewPath;
+    }
+    if (sLeft) {
+      const leftNewPath = 'img/game/ac_left.svg';
+      sLeft.src = leftNewPath;
+    }
+  } else {
+    if (sRight) {
+      const rightPath = 'img/game/right.svg';
+      sRight.src = rightPath;
+    }
+    if (sLeft) {
+      const leftPath = 'img/game/left.svg';
+      sLeft.src = leftPath;
+    }
+  }
+});
 
 // ------------------------------------------------- animal crossing open
 
 game.fromTo(
   '.switch_bg',
   { zIndex: 0, opacity: 0 },
-  { zIndex: 2000, opacity: 1, duration: 10 },
-  480
+  { zIndex: 2000, opacity: 1, duration: 20 },
+  660
 );
 
-game.fromTo('.select', { x: 0 }, { x: 248, duration: 10 }, 500);
-game.fromTo('.thumbnail', { x: 0 }, { x: -70, duration: 10 }, 500);
+game.fromTo('.select', { x: 0 }, { x: 248, duration: 20 }, 660);
+game.fromTo('.thumbnail', { x: 0 }, { x: -70, duration: 20 }, 660);
 
-game.fromTo('.ac_video', { opacity: 0 }, { opacity: 1, duration: 3 }, 530);
-game.fromTo('.ac_logo', { opacity: 0 }, { opacity: 1, duration: 10 }, 540);
-game.fromTo('.ac_logo', { opacity: 1 }, { opacity: 0, duration: 10 }, 560);
-game.fromTo(
-  '.switchImage',
-  { scale: 1.1 },
-  { scale: 2.53, duration: 10, ease: 'slow(0.7, 0.7, false)' },
-  570
-);
+game.fromTo('.ac_video', { opacity: 0 }, { opacity: 1, duration: 15 }, 680);
+game.fromTo('.ac_logo', { opacity: 0 }, { opacity: 1, duration: 15 }, 705);
+game.fromTo('.ac_logo', { opacity: 1 }, { opacity: 0, duration: 15 }, 730);
+game.fromTo('.switchImage', { scale: 1.1 }, { scale: 2.53, duration: 15 }, 750);
 game.fromTo(
   '.switch_bg, .ac_video',
   { scale: 1 },
-  { scale: 2.3, duration: 10, ease: 'slow(0.7, 0.7, false)' },
-  570
+  { scale: 2.3, duration: 15 },
+  750
 );
 
 // -------------------------------------- animal crossing full page effect
@@ -654,41 +754,42 @@ game.fromTo(
 game.fromTo(
   '.ac_bg01',
   { clipPath: 'circle(0% at 50% 50%)' },
-  { clipPath: 'circle(100% at 50% 50%)', duration: 15 }
+  { clipPath: 'circle(100% at 50% 50%)', duration: 15 },
+  770
 );
 
 game.fromTo(
   '.house_main',
   { scale: 0 },
-  { scale: 1, duration: 8, ease: 'back.out' },
-  590
+  { scale: 1, duration: 20, ease: 'back.out' },
+  785
 );
 game.fromTo(
   '.house_cap',
   { scale: 0 },
-  { scale: 1, duration: 8, ease: 'back.out' },
-  591
+  { scale: 1, duration: 20, ease: 'back.out' },
+  785
 );
 game.fromTo(
   '.textballon',
   { scale: 0 },
-  { scale: 1, duration: 10, ease: 'back.out' },
-  590
+  { scale: 1, duration: 20, ease: 'back.out' },
+  785
 );
 game.fromTo(
   '.id_house',
   { y: -200 },
-  { y: 0, duration: 10, ease: 'power2.out' },
-  595
+  { y: 0, duration: 20, ease: 'power2.out' },
+  785
 );
 game.fromTo(
   '.yeoul',
   { y: 700 },
-  { y: 0, duration: 10, ease: 'back.out' },
-  593
+  { y: 0, duration: 20, ease: 'back.out' },
+  785
 );
 
-game.to('.ac_video', { display: 'none' });
+game.to('.ac_video', { display: 'none' }, 790);
 
 // animal house body writing effect
 gsap.registerPlugin(TextPlugin);
@@ -696,10 +797,10 @@ gsap.registerPlugin(TextPlugin);
 game.to(
   '.house_body',
   {
-    duration: 10,
+    duration: 20,
     text: "In a room that's more spacious, you can line up your favorite furniture. Let's make an ideal room.",
   },
-  600
+  787
 );
 
 // ------------------------------------------------------- DIY change effect
@@ -707,358 +808,370 @@ game.to(
 game.fromTo(
   '.yeoul',
   { x: 0, y: 0 },
-  { x: 1183, y: -321, duration: 10, ease: 'back.out' },
-  627
+  { x: 1183, y: -321, duration: 25, ease: 'power1.out' },
+  830
 );
-game.fromTo('.textballon', { x: 0 }, { x: -72, duration: 10 }, 625);
+game.fromTo('.textballon', { x: 0 }, { x: -72, duration: 20 }, 830);
 game.fromTo(
   '.id_house',
   { y: 0 },
-  { y: -185, duration: 10, ease: 'back.out' },
-  620
+  { y: -185, duration: 15, ease: 'back.out' },
+  830
 );
 
 game.fromTo(
   '.house_main',
   { scale: 1 },
-  { scale: 0, duration: 8, ease: 'back.in' },
-  620
+  { scale: 0, duration: 15, ease: 'back.in' },
+  830
 );
 
 game.fromTo(
   '.house_cap',
   { scale: 1 },
-  { scale: 0, duration: 8, ease: 'back.in' },
-  620
+  { scale: 0, duration: 15, ease: 'back.in' },
+  830
 );
-game.fromTo('.house_body', { scale: 1 }, { scale: 0, duration: 2 }, 620);
+game.fromTo(
+  '.house_body',
+  { scale: 1, opacity: 1 },
+  { scale: 0, opacity: 0, duration: 5 },
+  830
+);
 
 game.fromTo(
   '.ac_bg02',
   { clipPath: 'circle(0% at 50% 50%)' },
   { clipPath: 'circle(100% at 50% 50%)', duration: 15 },
-  620
+  835
 );
 
 game.to(
   '.DIY_body',
   {
-    duration: 10,
+    duration: 20,
     text: 'Based on the recipe, DIY makes anything by hand. You can get a recipe from a message bottle or balloon.',
   },
-  630
+  847
 );
 
 game.fromTo(
   '.id_DIY',
   { y: -200 },
-  { y: -15, duration: 10, ease: 'back.out' },
-  630
+  { y: -15, duration: 20, ease: 'back.out' },
+  845
 );
 
 game.fromTo(
   '.DIY_cap',
   { scale: 0 },
-  { scale: 1, duration: 8, ease: 'back.out' },
-  628
+  { scale: 1, duration: 20, ease: 'back.out' },
+  845
 );
 
 game.fromTo(
   '.DIY_main',
   { scale: 0 },
-  { scale: 1, duration: 8, ease: 'back.out' },
-  627
+  { scale: 1, duration: 20, ease: 'back.out' },
+  845
 );
 // ------------------------------------------------------- fishing change effect
+game.fromTo(
+  '.yeoul',
+  { x: 1183 },
+  { x: -100, duration: 20, ease: 'power1.out' },
+  900
+);
+game.fromTo('.textballon', { x: -72 }, { x: -650, duration: 20 }, 900);
+game.fromTo(
+  '.DIY_cap',
+  { scale: 1 },
+  { scale: 0, duration: 15, ease: 'back.in' },
+  890
+);
+game.fromTo(
+  '.DIY_main',
+  { scale: 1 },
+  { scale: 0, duration: 15, ease: 'back.in' },
+  890
+);
+
+game.fromTo(
+  '.DIY_body',
+  { scale: 1, opacity: 1 },
+  { scale: 0, opacity: 0, duration: 5 },
+  890
+);
+game.fromTo('.id_DIY', { y: 0 }, { y: -200, duration: 15 }, 890);
 game.fromTo(
   '.ac_bg03',
   { clipPath: 'circle(0% at 50% 50%)' },
   { clipPath: 'circle(100% at 50% 50%)', duration: 15 },
-  650
+  895
 );
-game.fromTo(
-  '.yeoul',
-  { x: 0 },
-  { x: -100, duration: 10, ease: 'back.out' },
-  657
-);
-game.fromTo('.textballon', { x: 0 }, { x: -650, duration: 10 }, 655);
-game.fromTo(
-  '.DIY_cap',
-  { scale: 1 },
-  { scale: 0, duration: 10, ease: 'back.in' },
-  650
-);
-game.fromTo(
-  '.DIY_main',
-  { scale: 1 },
-  { scale: 0, duration: 10, ease: 'back.in' },
-  650
-);
-
-game.fromTo('.DIY_body', { scale: 1 }, { scale: 0, duration: 2 }, 650);
-game.fromTo('.id_DIY', { y: 0 }, { y: -200, duration: 10 }, 650);
 
 game.fromTo(
   '.fishing_main',
   { scale: 0 },
-  { scale: 1, duration: 10, ease: 'back.out' },
-  660
+  { scale: 1, duration: 20, ease: 'back.out' },
+  910
 );
 
 game.fromTo(
   '.fishing_cap',
   { scale: 0 },
-  { scale: 1, duration: 10, ease: 'back.out' },
-  658
+  { scale: 1, duration: 20, ease: 'back.out' },
+  910
 );
 
 game.fromTo(
   '.id_fishing',
   { y: -200 },
-  { y: -15, duration: 10, ease: 'back.out' },
-  660
+  { y: -15, duration: 20, ease: 'back.out' },
+  910
 );
 game.to(
   '.fishing_body',
   {
-    duration: 10,
+    duration: 20,
     text: 'On an island surrounded by the sea and where the river flows, you can catch many kinds of fish.',
   },
-  660
+  912
 );
 
 // ---------------------------------------------- animal crossing end
 
-game.fromTo(
-  '.switchImage',
-  { scale: 2.53 },
-  { scale: 1.1, duration: 20, ease: 'slow(0.7, 0.7, false)' },
-  710
-);
+game.fromTo('.switchImage', { scale: 2.53 }, { scale: 1.1, duration: 15 }, 950);
 
 game.fromTo(
-  '.switch_bg, .ac_video',
+  '.switch_bg',
   { scale: 2.3, opacity: 1 },
-  { scale: 1, opacity: 0, duration: 20, ease: 'slow(0.7, 0.7, false)' },
-  710
+  { scale: 1, opacity: 0, duration: 15 },
+  950
 );
 
-game.fromTo('.ac_cnt', { opacity: 1 }, { opacity: 0, duration: 5 }, 710);
+game.fromTo('.ac_cnt', { opacity: 1 }, { opacity: 0, duration: 15 }, 950);
+
+//---------------------------------------------------- joycon change
+
+game.fromTo('.s_right', { y: 0 }, { y: -780, duration: 30 }, 970);
+game.fromTo('.s_left', { y: 0 }, { y: -780, duration: 30 }, 970);
+game.fromTo('.s_right', { y: -780 }, { y: 0, duration: 30 }, 1000);
+game.fromTo('.s_left', { y: -780 }, { y: 0, duration: 30 }, 1000);
 
 // ---------------------------------------------------- pokemon open
 
 game.fromTo(
   '.switch_bg',
   { zIndex: 0, opacity: 0 },
-  { zIndex: 2000, opacity: 1, duration: 10 },
-  720
+  { zIndex: 2000, opacity: 1, duration: 20 },
+  1030
 );
 
-game.fromTo('.select', { x: 248 }, { x: 285, duration: 10 }, 740);
-game.fromTo('.thumbnail', { x: -70 }, { x: -350, duration: 10 }, 740);
+game.fromTo('.select', { x: 248 }, { x: 285, duration: 20 }, 1030);
+game.fromTo('.thumbnail', { x: -70 }, { x: -350, duration: 20 }, 1030);
 game.fromTo(
   '.thumbnail, .select',
   { opacity: 1 },
-  { opacity: 0, duration: 10 },
-  760
+  { opacity: 0, duration: 15 },
+  1060
 );
 game.fromTo(
   '.switch_bg',
   { backgroundColor: '#ffffff' },
-  { backgroundColor: 'black', duration: 3 },
-  760
+  { backgroundColor: 'black', duration: 15 },
+  1060
 );
-game.fromTo('.pk_logo', { opacity: 0 }, { opacity: 1, duration: 10 }, 770);
-game.fromTo('.pk_logo', { opacity: 1 }, { opacity: 0, duration: 10 }, 790);
-game.fromTo('.pk_bg', { opacity: 0 }, { opacity: 1, duration: 10 }, 795);
-game.fromTo('.switch_bg', { opacity: 1 }, { opacity: 0, duration: 10 }, 795);
+game.fromTo('.pk_logo', { opacity: 0 }, { opacity: 1, duration: 15 }, 1070);
+game.fromTo('.pk_logo', { opacity: 1 }, { opacity: 0, duration: 15 }, 1105);
+game.fromTo('.pk_bg', { opacity: 0 }, { opacity: 1, duration: 20 }, 1115);
+game.fromTo('.switch_bg', { opacity: 1 }, { opacity: 0, duration: 1 }, 1400);
 
 game.fromTo(
   '.switchImage',
   { scale: 1.1 },
-  { scale: 2.53, duration: 20, ease: 'slow(0.7, 0.7, false)' },
-  810
+  { scale: 2.53, duration: 15 },
+  1135
 );
-game.fromTo(
-  '.pk_bg',
-  { scale: 1 },
-  { scale: 2.3, ease: 'slow(0.7, 0.7, false)', duration: 20 },
-  810
-);
+game.fromTo('.pk_bg', { scale: 1 }, { scale: 2.3, duration: 15 }, 1125);
 game.fromTo(
   '.pk_icon1, .pk_icon2',
   { scale: 0, rotate: 0 },
-  { scale: 1, rotate: 180, duration: 10 },
-  830
+  { scale: 1, rotate: 180, duration: 20 },
+  1150
 );
-game.fromTo('.pk_icon1', { x: 0 }, { x: -420, duration: 15 }, 850);
-game.fromTo('.pk_icon2', { x: 0 }, { x: 420, duration: 15 }, 850);
+game.fromTo('.pk_icon1', { x: 0 }, { x: -420, duration: 20 }, 1170);
+game.fromTo('.pk_icon2', { x: 0 }, { x: 420, duration: 20 }, 1170);
 game.to(
   '.pkbody',
   {
-    duration: 15,
+    duration: 20,
     text: 'Which will you choose?',
   },
-  850
+  1170
 );
 game.to(
   '.pkbody',
   {
-    duration: 15,
+    duration: 20,
     text: '',
   },
-  870
+  1210
 );
-game.fromTo('.pk_icon1', { x: -420 }, { x: 0, duration: 15 }, 870);
-game.fromTo('.pk_icon2', { x: 420 }, { x: 0, duration: 15 }, 870);
-game.fromTo('.pk_icon2', { opacity: 1 }, { opacity: 0, duration: 1 }, 885);
+game.fromTo('.pk_icon1', { x: -420 }, { x: 0, duration: 20 }, 1210);
+game.fromTo('.pk_icon2', { x: 420 }, { x: 0, duration: 20 }, 1210);
+game.fromTo('.pk_icon2', { opacity: 1 }, { opacity: 0, duration: 0.1 }, 1230);
 game.fromTo(
   '.pk_icon1',
   { rotate: 0, opacity: 1, scale: 1 },
-  { rotate: 180, opacity: 0.5, scale: 6.48, duration: 10 },
-  890
+  { rotate: 180, opacity: 0.5, scale: 6.48, duration: 20 },
+  1230
 );
 
 // ---------------------------------------- quaxly effect
-game.fromTo('.qch', { scale: 0 }, { scale: 1, duration: 10 }, 895);
-game.fromTo('.tq1, .tq2', { opacity: 0 }, { opacity: 1, duration: 10 }, 895);
-game.fromTo('.choose_box', { opacity: 0 }, { opacity: 0.5, duration: 10 }, 895);
+game.fromTo('.qch', { scale: 0 }, { scale: 1, duration: 10 }, 1250);
+game.fromTo('.tq1, .tq2', { opacity: 0 }, { opacity: 1, duration: 10 }, 1250);
+game.fromTo(
+  '.choose_box',
+  { opacity: 0 },
+  { opacity: 0.5, duration: 10 },
+  1250
+);
 game.fromTo(
   '.qbody',
   { y: -10, opacity: 0 },
-  { y: -50, opacity: 1, duration: 10 },
-  898
+  { y: -50, opacity: 1, duration: 20 },
+  1260
 );
 game.fromTo(
   '.title_quaxly',
   { y: -490, opacity: 0 },
-  { y: -530, opacity: 1, duration: 10 },
-  902
+  { y: -530, opacity: 1, duration: 20 },
+  1270
 );
 game.fromTo(
   '.qcap1, .qcap2',
   { opacity: 0 },
-  { opacity: 0.3, duration: 10 },
-  895
+  { opacity: 0.3, duration: 20 },
+  1250
 );
 
 // ---------------------------------------- fuecoco change effect
-game.fromTo('.qch', { scale: 1 }, { scale: 0, duration: 10 }, 915);
-game.fromTo('.tq1, .tq2', { opacity: 1 }, { opacity: 0, duration: 10 }, 915);
+game.fromTo('.qch', { scale: 1 }, { scale: 0, duration: 10 }, 1310);
+game.fromTo('.tq1, .tq2', { opacity: 1 }, { opacity: 0, duration: 10 }, 1310);
 
 game.fromTo(
   '.qbody',
   { y: -50, opacity: 1 },
-  { y: -90, opacity: 0, duration: 6 },
-  918
+  { y: -90, opacity: 0, duration: 10 },
+  1310
 );
 game.fromTo(
   '.title_quaxly',
   { y: -530, opacity: 1 },
-  { y: -570, opacity: 0, duration: 6 },
-  918
+  { y: -570, opacity: 0, duration: 10 },
+  1310
 );
 
 game.fromTo(
   '.qcap1, .qcap2',
   { opacity: 0.3 },
   { opacity: 0, duration: 10 },
-  915
+  1310
 );
 game.fromTo(
   '.fcap1, .fcap2',
   { opacity: 0 },
   { opacity: 0.3, duration: 10 },
-  915
+  1310
 );
 game.fromTo(
   '.pk_icon1 svg path',
   { fill: '#004169' },
-  { fill: '#A65656', duration: 10 },
-  918
+  { fill: '#A65656', duration: 20 },
+  1310
 );
 game.fromTo(
   '.choose_box',
   { border: '3px solid #004169', color: '#004169' },
-  { border: '3px solid #A65656', color: '#A65656', duration: 10 },
-  918
+  { border: '3px solid #A65656', color: '#A65656', duration: 20 },
+  1310
 );
 
-game.fromTo('.pk_icon1', { rotate: 0 }, { rotate: 180, duration: 10 }, 918);
+game.fromTo('.pk_icon1', { rotate: 0 }, { rotate: 180, duration: 20 }, 1310);
 
-game.fromTo('.fch', { scale: 0 }, { scale: 1, duration: 10 }, 920);
-game.fromTo('.tf1, .tf2', { opacity: 0 }, { opacity: 1, duration: 10 }, 920);
+game.fromTo('.fch', { scale: 0 }, { scale: 1, duration: 20 }, 1330);
+game.fromTo('.tf1, .tf2', { opacity: 0 }, { opacity: 1, duration: 20 }, 1330);
 game.fromTo(
   '.fbody',
   { y: -315, opacity: 0 },
-  { y: -355, opacity: 1, duration: 10 },
-  923
+  { y: -355, opacity: 1, duration: 20 },
+  1340
 );
 game.fromTo(
   '.title_fuecoco',
   { y: -315, opacity: 0 },
-  { y: -355, opacity: 1, duration: 10 },
-  928
+  { y: -355, opacity: 1, duration: 20 },
+  1350
 );
 
 // ---------------------------------------- sprigatito change effect
-game.fromTo('.fch', { scale: 1 }, { scale: 0, duration: 10 }, 946);
-game.fromTo('.tf1, .tf2', { opacity: 1 }, { opacity: 0, duration: 10 }, 946);
+game.fromTo('.fch', { scale: 1 }, { scale: 0, duration: 10 }, 1390);
+game.fromTo('.tf1, .tf2', { opacity: 1 }, { opacity: 0, duration: 10 }, 1390);
 
 game.fromTo(
   '.fbody',
   { y: -355, opacity: 1 },
   { y: -395, opacity: 0, duration: 10 },
-  949
+  1390
 );
 game.fromTo(
   '.title_fuecoco',
   { y: -355, opacity: 1 },
   { y: -395, opacity: 0, duration: 10 },
-  949
+  1390
 );
 
 game.fromTo(
   '.fcap1, .fcap2',
   { opacity: 0.3 },
   { opacity: 0, duration: 10 },
-  946
+  1390
 );
 game.fromTo(
   '.scap1, .scap2',
   { opacity: 0 },
   { opacity: 0.3, duration: 10 },
-  946
+  1390
 );
 game.fromTo(
   '.pk_icon1 svg path',
   { fill: '#A65656' },
-  { fill: '#39AC37', duration: 10 },
-  949
+  { fill: '#39AC37', duration: 20 },
+  1390
 );
 game.fromTo(
   '.choose_box',
   { border: '3px solid #A65656', color: '#A65656' },
-  { border: '3px solid #39AC37', color: '#39AC37', duration: 10 },
-  949
+  { border: '3px solid #39AC37', color: '#39AC37', duration: 20 },
+  1390
 );
-game.fromTo('.pk_icon1', { rotate: 0 }, { rotate: 180, duration: 10 }, 949);
+game.fromTo('.pk_icon1', { rotate: 0 }, { rotate: 180, duration: 20 }, 1390);
 
-game.fromTo('.sch', { scale: 0 }, { scale: 1, duration: 10 }, 951);
-game.fromTo('.ts1, .ts2', { opacity: 0 }, { opacity: 1, duration: 10 }, 951);
+game.fromTo('.sch', { scale: 0 }, { scale: 1, duration: 20 }, 1380);
+game.fromTo('.ts1, .ts2', { opacity: 0 }, { opacity: 1, duration: 20 }, 1410);
 
 game.fromTo(
   '.sbody',
   { y: -315, opacity: 0 },
-  { y: -355, opacity: 1, duration: 10 },
-  954
+  { y: -355, opacity: 1, duration: 20 },
+  1420
 );
 game.fromTo(
   '.title_sprigatito',
   { y: -315, opacity: 0 },
-  { y: -355, opacity: 1, duration: 10 },
-  959
+  { y: -355, opacity: 1, duration: 20 },
+  1430
 );
 
 // ------------------------------------------------ controller page
@@ -1081,51 +1194,53 @@ var ctr = gsap.timeline({
     start: 'top top',
     end: 'bottom top',
     pin: true,
-    markers: true,
-    scrub: true,
+    markers: false,
+    scrub: false,
+
+    toggleActions: 'play none reverse reverse',
   },
 });
 ctr.fromTo(
   '.line1, .line2, .line3',
   { scale: 0 },
-  { scale: 1, duration: 140 },
+  { scale: 1, duration: 2 },
   0
 );
-ctr.fromTo('.n_n1', { opacity: 0 }, { opacity: 1, duration: 5 }, 0);
-ctr.fromTo('.n_i', { opacity: 0 }, { opacity: 1, duration: 5 }, 5);
-ctr.fromTo('.n_n2', { opacity: 0 }, { opacity: 1, duration: 5 }, 10);
-ctr.fromTo('.n_t', { opacity: 0 }, { opacity: 1, duration: 5 }, 15);
-ctr.fromTo('.n_e', { opacity: 0 }, { opacity: 1, duration: 5 }, 20);
-ctr.fromTo('.n_n3', { opacity: 0 }, { opacity: 1, duration: 5 }, 25);
-ctr.fromTo('.n_d', { opacity: 0 }, { opacity: 1, duration: 5 }, 30);
-ctr.fromTo('.n_o', { opacity: 0 }, { opacity: 1, duration: 5 }, 35);
+ctr.fromTo('.n_n1', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
+ctr.fromTo('.n_i', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.1);
+ctr.fromTo('.n_n2', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.2);
+ctr.fromTo('.n_t', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.3);
+ctr.fromTo('.n_e', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.4);
+ctr.fromTo('.n_n3', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.5);
+ctr.fromTo('.n_d', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.6);
+ctr.fromTo('.n_o', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.7);
 ctr.fromTo(
   '.is, .for',
   { opacity: 0, y: 15 },
-  { opacity: 1, y: 0, duration: 10 },
-  40
+  { opacity: 1, y: 0, duration: 0.5 },
+  0.7
 );
 ctr.fromTo(
   '.ctrbody',
   { opacity: 0, y: 20 },
-  { opacity: 1, y: 0, duration: 10 },
-  50
+  { opacity: 1, y: 0, duration: 1 },
+  1
 );
 ctr.fromTo(
   '.ent_ctr',
   { opacity: 0, x: -20 },
-  { opacity: 1, x: 0, duration: 10 },
-  45
+  { opacity: 1, x: 0, duration: 1 },
+  1
 );
 
-ctr.fromTo('.e_e1', { opacity: 0 }, { opacity: 1, duration: 5 }, 50);
-ctr.fromTo('.e_v', { opacity: 0 }, { opacity: 1, duration: 5 }, 55);
-ctr.fromTo('.e_e2', { opacity: 0 }, { opacity: 1, duration: 5 }, 60);
-ctr.fromTo('.e_r', { opacity: 0 }, { opacity: 1, duration: 5 }, 65);
-ctr.fromTo('.e_y', { opacity: 0 }, { opacity: 1, duration: 5 }, 70);
-ctr.fromTo('.e_o', { opacity: 0 }, { opacity: 1, duration: 5 }, 75);
-ctr.fromTo('.e_n', { opacity: 0 }, { opacity: 1, duration: 5 }, 80);
-ctr.fromTo('.e_e3', { opacity: 0 }, { opacity: 1, duration: 5 }, 85);
+ctr.fromTo('.e_e1', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.8);
+ctr.fromTo('.e_v', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.9);
+ctr.fromTo('.e_e2', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1);
+ctr.fromTo('.e_r', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.1);
+ctr.fromTo('.e_y', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.2);
+ctr.fromTo('.e_o', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.3);
+ctr.fromTo('.e_n', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.4);
+ctr.fromTo('.e_e3', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 1.5);
 
 // ------------------------------------------------ controller products page
 
@@ -1133,14 +1248,15 @@ var ctrpd = gsap.timeline({
   scrollTrigger: {
     trigger: '.ctr_products',
     start: 'top top',
-    // end: 'bottom 3000px',
+    end: 'bottom center',
     // pin: true,
-    markers: true,
+    markers: false,
     scrub: true,
+    ease: 'none',
   },
 });
 
-ctrpd.fromTo('.prbar', { y: 0 }, { y: 2160 }, 0);
+ctrpd.fromTo('.prbar', { y: 0 }, { y: 1800 }, 0);
 ctrpd.fromTo('.present', { x: 65, y: -221 }, { x: 65, y: 323 }, 0);
 
 // --------------------- kirby star rotate
@@ -1150,10 +1266,10 @@ gsap.to(kirbyStar, {
   rotate: 360,
   transformOrigin: 'center center',
   filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-  duration: 2.5,
+  duration: 1,
   repeat: -1,
-  delay: 3,
-  repeatDelay: 3,
+  delay: 1,
+  repeatDelay: 1,
 });
 
 // ------------------------- kirby effect
@@ -1164,40 +1280,45 @@ var kirby = gsap.timeline({
     start: 'top 300px',
     end: 'bottom 1000px',
     // pin: true,
-    markers: true,
-    scrub: true,
+    markers: false,
+    scrub: false,
+
+    toggleActions: 'play none reverse reverse',
   },
 });
 kirby.fromTo(
   '.kirby_title, .kirbycap',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 15 },
+  { opacity: 1, y: 0, duration: 0.5 },
   0
 );
 kirby.fromTo(
   '.kirbybody',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 15 },
-  5
+  { opacity: 1, y: 0, duration: 0.5 },
+  1
 );
 kirby.fromTo(
   '.star1',
   { scale: 0, rotate: -180 },
-  { scale: 1, rotate: 0, duration: 15 }
+  { scale: 1, rotate: 0, duration: 0.5 },
+  1
 );
 kirby.fromTo(
   '.star2',
   { scale: 0, rotate: -180 },
-  { scale: 1, rotate: 0, duration: 15 }
+  { scale: 1, rotate: 0, duration: 0.5 },
+  1.5
 );
-kirby.fromTo('.star3', { scale: 0 }, { scale: 1, duration: 15 });
+kirby.fromTo('.star3', { scale: 0 }, { scale: 1, duration: 0.5 }, 0.5);
 kirby.fromTo(
   '.ctrkirby1',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 15 }
+  { opacity: 1, y: 0, duration: 0.5 },
+  0.5
 );
-kirby.fromTo('.ctrkirby2', { opacity: 0 }, { opacity: 1, duration: 15 });
-kirby.fromTo('.kirbych', { scale: 0 }, { scale: 1, duration: 15 });
+kirby.fromTo('.ctrkirby2', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 1);
+kirby.fromTo('.kirbych', { scale: 0 }, { scale: 1, duration: 0.5 }, 0.5);
 9;
 // // --------------------------------------- pikachu effect
 
@@ -1207,34 +1328,41 @@ var pikachu = gsap.timeline({
     start: 'top 300px',
     end: 'bottom 1000px',
     // pin: true,
-    markers: true,
-    scrub: true,
+    markers: false,
+    scrub: false,
+
+    toggleActions: 'play none reverse reverse',
   },
 });
 
 pikachu.fromTo(
   '.pikachu_title, .pikachucap',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 15 }
+  { opacity: 1, y: 0, duration: 0.5 },
+  0
 );
 pikachu.fromTo(
   '.pikachubody',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 14 },
-  5
+  { opacity: 1, y: 0, duration: 0.5 },
+  0.5
 );
 pikachu.fromTo(
   '.pikachuball',
   { scale: 0, rotate: -180 },
-  { scale: 1, rotate: 0, duration: 15 }
+  { scale: 1, rotate: 0, duration: 0.5 },
+  0
 );
-pikachu.fromTo('.pikachuch', { scale: 0 }, { scale: 1, duration: 15 });
+pikachu.fromTo('.pikachuch', { scale: 0 }, { scale: 1, duration: 0.5 }, 1);
 pikachu.fromTo(
   '.pikachu1',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 15 }
+  { opacity: 1, y: 0, duration: 0.5 },
+  0.5
 );
-pikachu.fromTo('.pikachu2', { opacity: 0 }, { opacity: 1, duration: 15 });
+pikachu.fromTo('.pikachu2', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.8);
+
+//  mario
 
 var mario = gsap.timeline({
   scrollTrigger: {
@@ -1242,40 +1370,48 @@ var mario = gsap.timeline({
     start: 'top 300px',
     end: 'bottom 1000px',
     // pin: true,
-    markers: true,
-    scrub: true,
+    markers: false,
+    scrub: false,
+
+    toggleActions: 'play none reverse reverse',
   },
 });
 
 mario.fromTo(
   '.mario_title, .mariocap',
   { opacity: 0, x: -150 },
-  { opacity: 1, x: 0, duration: 15 },
+  { opacity: 1, x: 0, duration: 0.5 },
   0
 );
 mario.fromTo(
-  '.mariobody1, .mariobody2',
-  { opacity: 0, x: -150 },
-  { opacity: 1, x: 0, duration: 15 },
-  5
+  '.mariobody1',
+  { opacity: 0, x: -30 },
+  { opacity: 1, x: 0, duration: 0.5 },
+  0.5
 );
-mario.fromTo('.marioch1', { scale: 0 }, { scale: 1, duration: 15 }, 3);
-mario.fromTo('.marioch2', { scale: 0 }, { scale: 1, duration: 15 }, 3);
-mario.fromTo('.marioch3', { scale: 0 }, { scale: 1, duration: 15 }, 3);
+mario.fromTo(
+  '.mariobody2',
+  { opacity: 0, x: -30 },
+  { opacity: 1, x: 0, duration: 0.5 },
+  0.7
+);
+mario.fromTo('.marioch1', { scale: 0 }, { scale: 1, duration: 0.5 }, 0);
+mario.fromTo('.marioch2', { scale: 0 }, { scale: 1, duration: 0.5 }, 0.5);
+mario.fromTo('.marioch3', { scale: 0 }, { scale: 1, duration: 0.5 }, 0.5);
 
 mario.fromTo(
   '.ctrmario2',
   { opacity: 0, y: -50 },
-  { opacity: 1, y: 0, duration: 15 },
-  5
+  { opacity: 1, y: 0, duration: 0.5 },
+  0.5
 );
-mario.fromTo('.ctrmario1', { opacity: 0 }, { opacity: 1, duration: 15 }, 0);
+mario.fromTo('.ctrmario1', { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
 
 mario.fromTo(
   '.marioch4',
   { opacity: 0, y: 130 },
-  { opacity: 1, y: 0, duration: 15 },
-  5
+  { opacity: 1, y: 0, duration: 0.5 },
+  0.5
 );
 
 // ------------------------------- outro page effect
@@ -1283,72 +1419,73 @@ mario.fromTo(
 var outro = gsap.timeline({
   scrollTrigger: {
     trigger: '.outro',
-    start: 'bottom bottom',
+    start: 'top 300px',
     // end: 'bottom center',
-    pin: true,
-    markers: true,
-    scrub: true,
+    // pin: true,
+    markers: false,
+    scrub: false,
+    toggleActions: 'play none reverse reverse',
   },
 });
 
 outro.fromTo(
   '.och',
   { scale: 0 },
-  { scale: 1, duration: 10, ease: 'back.out' },
-  3
+  { scale: 1, duration: 1.5, ease: 'back.out' },
+  0.9
 );
 
-outro.fromTo('.outroswitch, .sw_line', { x: 1600 }, { x: 0, duration: 10 }, 0);
+outro.fromTo('.outroswitch, .sw_line', { x: 1600 }, { x: 0, duration: 1 }, 0.6);
 outro.fromTo(
   '.h_centerline',
   { width: 800, height: 28 },
-  { width: 84, height: 28, duration: 10 },
-  5
+  { width: 84, height: 28, duration: 1 },
+  0.6
 );
 outro.fromTo(
   '.outroplay, .pl_line, .oicon5',
   { x: 1400 },
-  { x: 0, duration: 10 },
-  3
+  { x: 0, duration: 1 },
+  0.6
 );
 outro.fromTo(
   '.l_btmline',
   { width: 800, height: 16 },
-  { width: 81, height: 16, duration: 10 },
-  8
+  { width: 81, height: 16, duration: 1 },
+  0.6
 );
 
 outro.fromTo(
   '.bgplay',
   { opacity: 0, y: -100 },
-  { opacity: 1, y: 0, duration: 10 },
-  3
+  { opacity: 1, y: 0, duration: 1 },
+  0.5
 );
 outro.fromTo(
   '.itloud',
   { opacity: 0, y: 100 },
-  { opacity: 1, y: 0, duration: 10 },
-  6
+  { opacity: 1, y: 0, duration: 1 },
+  0.5
 );
-outro.fromTo('.outrobody', { y: 700 }, { y: 0, duration: 10 }, 4);
+outro.fromTo('.outrobody', { y: 700 }, { y: 0, duration: 1 }, 1);
 outro.fromTo(
   '.oicon1',
   { y: -300, rotate: -180 },
-  { y: 0, rotate: 0, duration: 10 },
+  { y: 0, rotate: 0, duration: 1 },
   1
 );
 outro.fromTo(
   '.oicon2',
   { x: -300, rotate: 180 },
-  { x: 0, rotate: 0, duration: 10 },
-  2
+  { x: 0, rotate: 0, duration: 1 },
+  1
 );
-outro.fromTo('.oicon3', { opacity: 0 }, { opacity: 1, duration: 10 }, 5);
-outro.fromTo('.oicon4', { y: 500 }, { y: 0, duration: 10 }, 2);
+outro.fromTo('.oicon3', { opacity: 0 }, { opacity: 1, duration: 1 }, 0.5);
+outro.fromTo('.oicon4', { y: 500 }, { y: 0, duration: 1 }, 2);
 outro.fromTo(
   '.oicon7',
   { opacity: 0, rotate: 360 },
-  { opacity: 1, rotate: 0, duration: 10 },
+  { opacity: 1, rotate: 0, duration: 1 },
   0
 );
-outro.fromTo('.oicon6', { x: 300 }, { x: 0, duration: 10 }, 5);
+outro.fromTo('.oicon6', { x: 300 }, { x: 0, duration: 1 }, 0.5);

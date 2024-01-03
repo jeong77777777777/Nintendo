@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nintendo</title>
+
+    <link rel="shortcut icon" href="img/fabicon.svg" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/custom.css" />
@@ -17,9 +19,13 @@
       </nav>
       <!-- menu -->
       <section class="menu">
-        <div class="close">
-          <img src="./img/menu/close.svg" alt="" />
+        <div class="menutop">
+          <div class="menubox">Menu</div>
+          <div class="close">
+            <img src="./img/menu/close.svg" alt="" />
+          </div>
         </div>
+
         <div class="menu_cnt">
           <img src="./img/menu/hwicon.svg" class="hwicon" alt="" />
           <img src="./img/menu/zdicon.svg" class="zdicon" alt="" />
@@ -27,12 +33,21 @@
           <img src="./img/menu/pkicon.svg" class="pkicon" alt="" />
           <img src="./img/menu/cticon.svg" class="cticon" alt="" />
         </div>
+        <div class="menu_title">
+          <p class="menu_title_zd">The Legend of Zelda tears of the Kingdom</p>
+          <p class="menu_title_ac">Animal Crossing : New Horizons</p>
+          <p class="menu_title_pk">Pokémon Scarlet and Violet</p>
+        </div>
       </section>
 
       <!-- intro -->
       <section class="intro">
         <div class="nav_box">
-          <img src="./img/nintendo_logo_white.svg" alt="" />
+          <img
+            src="./img/nintendo_logo_white.svg"
+            style="z-index: 100"
+            alt=""
+          />
           <img src="./img/menu.svg" alt="" />
         </div>
         <video src="./video/intro.mp4" autoplay muted loop></video>
@@ -118,110 +133,148 @@
 
       <section class="hardware">
         <div class="arrowbox_left">
-          <img
-            src="img/hardware/The Best Play Here.svg"
-            class="thebest"
-            alt=""
-          />
           <img src="img/hardware/back_icon.svg" class="back_icon" alt="" />
         </div>
-        <div class="hardwarebox">
-          <!-- hardware01 -->
-          <div class="hw hardware01">
-            <img
-              src="./img/hardware/switch_shadow.svg"
-              class="switch_shadow"
-              alt=""
-            />
-            <p class="OLED_text">OLED</p>
-            <div class="circles">
+        <div class="slider-container">
+          <div class="hardwarebox">
+            <!-- hardware01 -->
+            <div class="hw hardware01">
               <img
-                src="./img/hardware/hw01_c02.svg"
+                src="./img/hardware/switch_shadow.svg"
+                class="switch_shadow"
                 alt=""
-                class="hw01_c02"
-              /><img
-                src="./img/hardware/hw01_c03.svg"
-                alt=""
-                class="hw01_c03"
               />
-            </div>
+              <p class="OLED_text">OLED</p>
+              <div class="circles">
+                <img
+                  src="./img/hardware/hw01_c02.svg"
+                  alt=""
+                  class="hw01_c02"
+                /><img
+                  src="./img/hardware/hw01_c03.svg"
+                  alt=""
+                  class="hw01_c03"
+                />
+              </div>
 
-            <div class="title">
+              <div class="title">
+                <p class="Switch_s">Switch</p>
+                <p class="Switch">Switch</p>
+                <img
+                  src="./img/hardware/main_nintendo_oled.svg"
+                  class="oled"
+                  alt=""
+                />
+                <p class="Nintendo_s">Nintendo</p>
+                <p class="Nintendo">Nintendo</p>
+              </div>
+
+              <img
+                src="./img/hardware/OLED_mask.svg"
+                class="OLED_mask"
+                alt=""
+              />
+              <p class="cap01">
+                Level up with an OLED screen that makes colors pop.
+              </p>
+            </div>
+            <!-- hardware02 -->
+            <div class="hw hardware02">
+              <img
+                src="./img/hardware/switch_shadow.svg"
+                class="switch_shadow"
+                alt=""
+              />
+
+              <div class="circles">
+                <img
+                  src="./img/hardware/hw02_c01.svg"
+                  class="hw02_c01"
+                  alt=""
+                />
+                <img
+                  src="./img/hardware/hw02_c02.svg"
+                  class="hw02_c02"
+                  alt=""
+                />
+                <img
+                  src="./img/hardware/hw02_c03.svg"
+                  class="hw02_c03"
+                  alt=""
+                />
+              </div>
+
+              <p class="Nintendo_s">Nintendo</p>
               <p class="Switch_s">Switch</p>
+
               <p class="Switch">Switch</p>
               <img
-                src="./img/hardware/main_nintendo_oled.svg"
-                class="oled"
+                src="./img/hardware/switch_mask.svg"
+                class="switch_mask"
                 alt=""
               />
-              <p class="Nintendo_s">Nintendo</p>
+              <img
+                src="./img/hardware/main_nintendo_switch.svg"
+                class="switch"
+                alt=""
+              />
               <p class="Nintendo">Nintendo</p>
+              <p class="cap02">Play at home or on the go with one system.</p>
             </div>
+            <!-- hardware03 -->
+            <div class="hw hardware03_gray">
+              <div class="switch03">
+                <span id="Switch_s">Switch</span>
+                <span id="Switch">Switch</span>
+              </div>
+              <img
+                src="./img/hardware/circle_gray01.svg"
+                class="01 circle"
+                id="c01"
+                alt=""
+              />
+              <img
+                src="./img/hardware/circle_gray02.svg"
+                class="02 circle"
+                id="c02"
+                alt=""
+              />
+              <img
+                src="./img/hardware/circle_gray03.svg"
+                class="03 circle"
+                id="c03"
+                alt=""
+              />
+              <img
+                src="./img/hardware/circle_gray04.svg"
+                class="04 circle"
+                id="c04"
+                alt=""
+              />
 
-            <img src="./img/hardware/OLED_mask.svg" class="OLED_mask" alt="" />
-            <p class="cap">
-              Level up with an OLED screen that makes colors pop.
-            </p>
-          </div>
-          <!-- hardware02 -->
-          <div class="hw hardware02">
-            <img
-              src="./img/hardware/switch_shadow.svg"
-              class="switch_shadow"
-              alt=""
-            />
+              <img
+                src="./img/hardware/lite_gray.svg"
+                class="lite_gray"
+                alt=""
+              />
+              <div class="nintendo03">
+                <p id="Nintendo_s">Nintendo</p>
+                <p id="Nintendo">Nintendo</p>
+              </div>
 
-            <div class="circles">
-              <img src="./img/hardware/hw02_c01.svg" class="hw02_c01" alt="" />
-              <img src="./img/hardware/hw02_c02.svg" class="hw02_c02" alt="" />
-              <img src="./img/hardware/hw02_c03.svg" class="hw02_c03" alt="" />
-            </div>
+              <p class="cap">Dedicated to portable play.</p>
+              <span class="picktext"
+                >Pick your color : Hover your mouse here</span
+              >
+              <div class="color_palette"></div>
 
-            <p class="Nintendo_s">Nintendo</p>
-            <p class="Switch_s">Switch</p>
-
-            <p class="Switch">Switch</p>
-            <img
-              src="./img/hardware/switch_mask.svg"
-              class="switch_mask"
-              alt=""
-            />
-            <img
-              src="./img/hardware/main_nintendo_switch.svg"
-              class="switch"
-              alt=""
-            />
-            <p class="Nintendo">Nintendo</p>
-            <p class="cap">Play at home or on the go with one system.</p>
-          </div>
-          <!-- hardware03 -->
-          <div class="hw hardware03_gray">
-            <div class="circles">
-              <img src="./img/hardware/circle_gray01.svg" class="01" alt="" />
-              <img src="./img/hardware/circle_gray02.svg" class="02" alt="" />
-              <img src="./img/hardware/circle_gray03.svg" class="03" alt="" />
-              <img src="./img/hardware/circle_gray04.svg" class="04" alt="" />
-            </div>
-            <div class="switch03">
-              <span id="Switch_s">Switch</span>
-              <span id="Switch">Switch</span>
-            </div>
-            <img src="./img/hardware/lite_gray.svg" class="lite_gray" alt="" />
-            <div class="nintendo03">
-              <p id="Nintendo_s">Nintendo</p>
-              <p id="Nintendo">Nintendo</p>
-            </div>
-
-            <p class="cap">Dedicated to portable play.</p>
-            <span>Pick your color</span>
-            <div class="color_palette"></div>
-
-            <div class="pickcolor">
-              <div class="yellow"></div>
-              <div class="cyan"></div>
-              <div class="pink"></div>
-              <div class="gray" id="selected"></div>
-              <div class="blue"></div>
+              <div class="pickcolor">
+                <div class="yellow"></div>
+                <div class="cyan"></div>
+                <div class="pink"></div>
+                <div class="gray" id="selected"></div>
+                <div class="blue"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -232,6 +285,9 @@
           <div class="id_hw01"></div>
           <div class="id_hw02"></div>
           <div class="id_hw03"></div>
+        </div>
+        <div class="hw_id02">
+          <img src="img/hardware/indicator_hw.svg" alt="" />
         </div>
       </section>
       <!-- main01 -->
@@ -283,8 +339,10 @@
               <img src="./img/zelda/btmtext.svg" alt="" />
             </div>
             <div class="factor">
-              <img src="./img/zelda/zelda2.svg" alt="" />
-              <img src="./img/zelda/zelda3.svg" alt="" />
+              <img src="./img/zelda/zelda1.svg" class="zelda1" alt="" />
+              <img src="./img/zelda/zelda2.svg" class="zelda2" alt="" />
+              <img src="./img/zelda/zelda3.svg" class="zelda3" alt="" />
+              <img src="./img/zelda/zelda4.svg" class="zelda4" alt="" />
             </div>
             <div class="card">
               <div class="card03box">
@@ -721,16 +779,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/EasePack.min.js"></script>
     <!-- <script src="js/gsap.js"></script>
     <script src="js/scrollTrigger.js"></script> -->
-    <!-- <script src="js/scrollsmooth.js"></script> -->
+    <script src="js/scrollsmooth.js"></script>
     <script src="js/scrollbar.js"></script>
     <script src="custom.js"></script>
   </body>
 </html>
 
-<!-- hw01 arrow 부분 수정 -->
-<!-- hw id -->
 <!-- zelda1,2,3,4 추가 -->
-<!-- 가로스크롤 인터렉션 -->
-<!-- intro nav box -->
 
-<!-- joycon change -->
+<!-- joycon change >> pk duration +10 -->

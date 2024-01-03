@@ -1,14 +1,39 @@
 /* -------------------- menu style --------------------- */
 .menu {
   width: 1920px;
-  height: 500px;
+  height: 900px;
   background: var(--real_p_red);
-  padding-top: 150px;
+  padding-top: 200px;
   position: fixed;
   z-index: 2000;
   box-shadow: 0px 12px 8.4px 0px rgba(0, 0, 0, 0.25);
   transform: translateY(-120%);
   transition: transform 1s ease;
+}
+
+.menutop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 42px;
+  transform: translateY(-200px);
+}
+
+.menubox {
+  width: 171px;
+  height: 42px;
+  border-radius: 41px;
+  border: 5px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 28.8px */
 }
 
 .menu_cnt {
@@ -23,6 +48,33 @@
   filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
   transition: all 0.4s;
 }
+
+.menu_title {
+  position: relative;
+}
+.menu_title * {
+  color: #ffe3e3;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 120%; /* 46.918px */
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 60px;
+  transition: all 0.4s;
+  opacity: 0;
+}
+
+.menu_title_zd {
+  left: 395px;
+}
+
+.menu_title_ac {
+  left: 730px;
+}
+.menu_title_pk {
+  left: 1033px;
+}
 /* 
 .menu_cnt img:hover {
   margin: 0 35px;
@@ -30,12 +82,6 @@
   transition: all 0.4s;
   filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.6));
 } */
-
-.close {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
 /* -------------- nav style ----------------- */
 nav {
@@ -52,6 +98,7 @@ nav .nintendo_logo {
   width: 171px;
   height: 42px;
   margin-left: 42px;
+  opacity: 0;
 }
 
 /* --------------------------- intro style --------------------------- */
@@ -309,7 +356,7 @@ nav .nintendo_logo {
   top: 626px;
   z-index: 3;
 }
-/* ------------------------ hw 1p style --------------------------- */
+/* ------------------------ hardware page style --------------------------- */
 
 .hardware {
   width: 100%;
@@ -317,42 +364,78 @@ nav .nintendo_logo {
   display: flex;
   overflow: hidden;
 }
+
+.slider-container {
+  width: 1614px;
+  height: 1080px;
+  overflow: hidden;
+  position: relative;
+}
+.hardwarebox {
+  position: relative;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.hw {
+  width: 1614px;
+  height: 1080px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ----------------------- arrowbox ----------------------- */
+
 .arrowbox_left,
 .arrowbox_right {
-  border: 1px solid purple;
   width: 153px;
   height: 1080px;
   background: #fff;
   z-index: 1;
   position: relative;
 }
-.hardwarebox,
-.hw {
-  width: 1614px;
-  height: 1080px;
-  position: relative;
-}
-.hardware02 {
-  transform: translate(1614px, -1080px);
-}
-.hardware03_gray {
-  transform: translate(3228px, -2160px);
-}
-
-/* ----------------------- arrowbox ----------------------- */
-
-.arrowbox_left .thebest {
-  position: absolute;
-  left: 62px;
-  top: 414px;
-}
 
 .arrowbox_left .back_icon,
 .arrowbox_right .next_icon {
   transform: translate(63px, 513px);
 }
-.back_icon {
-  opacity: 0;
+
+/* ----------------------  hw_id ---------------------- */
+
+.hw_id {
+  position: absolute;
+  width: 276px;
+  height: 9px;
+  left: 193px;
+  top: 1003px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hw_id > * {
+  transition: all 0.4s ease-in-out;
+}
+
+.hw_id .id_hw01 {
+  /* width: 210px; */
+  height: 9px;
+  border-radius: 9px;
+  background: var(--primary_red, #d42d26);
+}
+
+.id_hw02,
+.id_hw03 {
+  /* width: 9px; */
+  height: 9px;
+  border-radius: 9px;
+  background: var(--gray_200, #ccc);
+}
+
+.hw_id02 {
+  position: absolute;
+  left: 1692px;
+  top: 989px;
+  z-index: 10;
 }
 
 /* ------------hw01-------------------- */
@@ -408,7 +491,7 @@ nav .nintendo_logo {
   top: 631px;
 }
 
-.hardware01 .cap {
+.hardware01 .cap01 {
   color: var(--gray_800);
 
   font-size: 26px;
@@ -422,7 +505,7 @@ nav .nintendo_logo {
 .hardware01 .oled {
   position: absolute;
   left: 217px;
-  top: 226px;
+  top: 200px;
 }
 
 .hardware01 .circles .hw01_c01 {
@@ -467,7 +550,7 @@ nav .nintendo_logo {
   top: 850px;
 }
 
-.hardware02 .cap {
+.hardware02 .cap02 {
   color: var(--gray_800);
   font-size: 26px;
   font-weight: 300;
@@ -478,19 +561,19 @@ nav .nintendo_logo {
 
 .hardware02 .switch {
   left: 226px;
-  top: 48px;
+  top: 0px;
   transform: rotate(5.179deg);
 }
 
-.hardware02 .circles .hw02_c01 {
+.hardware02 .hw02_c01 {
   left: 391px;
   top: 90px;
 }
-.hardware02 .circles .hw02_c02 {
+.hardware02 .hw02_c02 {
   left: 1264px;
   top: 508px;
 }
-.hardware02 .circles .hw02_c03 {
+.hardware02 .hw02_c03 {
   left: 264px;
   top: 140px;
 }
@@ -541,25 +624,25 @@ nav .nintendo_logo {
 }
 
 /*----------------------------- hw03 -----------------------------*/
-.hardware03_gray .circles img:nth-child(1) {
+.hardware03_gray #c01 {
   left: 536px;
   top: 81px;
 }
-.hardware03_gray .circles img:nth-child(2) {
+.hardware03_gray #c02 {
   left: 144px;
   top: 416px;
 }
-.hardware03_gray .circles img:nth-child(3) {
+.hardware03_gray #c03 {
   left: 1495px;
   top: 595px;
 }
-.hardware03_gray .circles img:nth-child(4) {
+.hardware03_gray #c04 {
   left: 105px;
   top: 322px;
 }
 .hardware03_gray .lite_gray {
   left: 258px;
-  top: 222px;
+  top: 170px;
   transform: rotate(11.75deg);
 }
 
@@ -662,58 +745,11 @@ nav .nintendo_logo {
   background: #062b91;
 }
 
-/* ----------------------  hw_id ---------------------- */
-
-.hw_id {
-  position: absolute;
-  width: 276px;
-  height: 9px;
-  left: 193px;
-  top: 1003px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.hw_id .id_hw01 {
-  width: 210px;
-  height: 9px;
-  border-radius: 9px;
-  background: var(--primary_red, #d42d26);
-}
-
-.id_hw02,
-.id_hw03 {
-  width: 9px;
-  height: 9px;
-  border-radius: 9px;
-  background: var(--gray_200, #ccc);
-}
-
 /* ---------------------- main01 page style ---------------- */
 .main01 {
   overflow: hidden;
   background-color: var(--primary_red);
   scroll-snap-type: y mandatory;
-}
-
-.main01 #joycon {
-  left: -155px;
-  top: 380px;
-  transform: rotate(-215.958deg);
-  /* transform: rotateX(-180deg); */
-}
-.main01 #play {
-  left: 436px;
-  top: 418px;
-}
-
-.main01 #together {
-  left: 152px;
-  top: 670px;
-}
-
-.main01 #blur {
-  display: none;
 }
 
 .line {
@@ -722,7 +758,7 @@ nav .nintendo_logo {
   opacity: 0.6;
   background: #e6e6e6;
   left: 1272px;
-  top: 284px;
+  top: 190px;
 }
 
 .main01 p {
@@ -732,7 +768,7 @@ nav .nintendo_logo {
   line-height: 34px; /* 130.769% */
   opacity: 0.6;
   left: 1314px;
-  top: 298px;
+  top: 200px;
   width: 508px;
 }
 
@@ -753,11 +789,6 @@ nav .nintendo_logo {
   /* transform: translateY(-50%) !important; */
 }
 
-/* .game_c .switchImage .s_left {
-  position: absolute;
-
-  z-index: -1;
-} */
 .game_c .s_center {
   transform: translateX(-16px);
 }
@@ -1020,15 +1051,24 @@ nav .nintendo_logo {
   mix-blend-mode: color-burn;
 }
 
-.game_c .zelda_cnt .factor img:nth-child(1) {
+.zelda1 {
+  left: -88px;
+  top: 257px;
+}
+
+.game_c .factor .zelda2 {
   left: 1689px;
   top: 244px;
   transform: rotate(-40deg);
 }
 
-.game_c .zelda_cnt .factor img:nth-child(2) {
+.game_c .factor .zelda3 {
   left: 366px;
   top: 736px;
+}
+.zelda4 {
+  left: 1418px;
+  top: 146px;
 }
 
 /* ---------------- game02 animal crossing  -------------------- */
@@ -1380,6 +1420,10 @@ nav .nintendo_logo {
 }
 
 /* ---------------------- controller page style ------------------------ */
+
+.controller {
+  background-color: #fff;
+}
 
 .controller * {
   position: absolute;
